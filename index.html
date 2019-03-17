@@ -4,40 +4,141 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Curtis Conway</title>
+  <title>Curt Conway</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#330099">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
   <style>
+    html {
+      box-sizing:border-box;
+      height:100%;
+    }
+    * {
+      box-sizing:border-box;
+    }
     body {
       margin:0;
-      background-color:#e4e4e4;
+      background-color:#242424;
+      position:relative;
+      height:auto;
+      min-height:100%;
     }
     header {
       height:300px;
-      background-color:#330099;
       color:#fff;
-      padding:30px;
+      background-color:#330099;
       display:flex;
       flex-direction:column;
       justify-content:center;
+      position:relative;
     }
     section {
-      max-width:960px;
-      width:100%;
+      padding:30px;
+      max-width:100%;
+      width:960px;
       margin:0 auto;
       text-align:left;
-      font-family: 'Montserrat', sans-serif;;
+      font-family: 'Montserrat', sans-serif;
+      z-index:10;
+      color:#fff;
+    }
+    i {
+      font-size:24px;
+      color:#fff;
+      transition: opacity .2s ease-in-out;
+      will-change:opacity;
+    }
+    i:hover:not(:focus) {
+      opacity:.75;
     }
     h1 {
       margin:0;
       font-weight:700;
       font-size:72px;
+      letter-spacing:-3px;
+      z-index:10;
+      text-shadow: 0 4px 3px rgba(0,0,0,0.4),
+      0 8px 13px rgba(0,0,0,0.1),
+      0 18px 23px rgba(0,0,0,0.1);
     }
     h6 {
       margin:0 0 20px;
       font-weight:300;
       font-size:16px;
+      z-index:10;
+    }
+    p {
+      font-size:16px;
+      margin:0;
+      font-weight:300;
+      z-index:10;
+    }
+    hr {
+      z-index:10;
+    }
+
+    .box__relative {
+      position:relative;
+      display:inline-block;
+      width:100%;
+      max-width:100%;
+      height:300px;
+    }
+    img {
+      max-width:100%;
+      height:0;
+      padding-bottom:50.5%;
+      background-size:cover;
+    }
+
+    .background_polygon {
+      position:absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      transform:skewY(-4deg) scaleY(2);
+    }
+
+    .background_polygon .polygon {
+      z-index:11;
+    }
+
+    .background_polygon .polygon:nth-child(1) {
+      filter:saturate(95%);
+      transform:scaleY(.20) scaleX(.34) translateY(200%) translateX(-100%);
+    }
+    
+    .background_polygon .polygon:nth-child(2) {
+      filter:saturate(85%);
+      transform:scaleY(.20) scaleX(.34) translateY(200%) translateX(100%);
+    }
+
+    .background_polygon .polygon:nth-child(3) {
+      filter:saturate(65%);
+      transform:scaleY(.40) scaleX(.2) translateY(-75%) translateX(-200%);
+    }
+
+    .background_polygon .polygon:nth-child(4) {
+      filter:saturate(75%);
+      transform:scaleY(.40) scaleX(.2) translateY(-75%) translateX(-100%);
+    }
+
+    .background_polygon .polygon:nth-child(5) {
+      filter:saturate(85%);
+      transform:scaleY(.40) scaleX(.2) translateY(-75%);
+    }
+
+    .purple_polygon {
+      background-color:#330099;
+      z-index:1;
+    }
+
+    .purple_polygon > .polygon {
+      background-color:#330099;
     }
   </style>
 </head>
@@ -48,7 +149,18 @@
     <h1>Hi, I'm Curt.</h1>
     <h6>I make cool shit on the internet.</h6>
     <hr>
+    <a href="https://github.com/CurtisConway" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
   </section>
+
+  <div class="background_polygon purple_polygon">
+    <div class="background_polygon polygon polygon_2"></div>
+    <div class="background_polygon polygon polygon_3"></div>
+    <div class="background_polygon polygon polygon_4"></div>
+    <div class="background_polygon polygon polygon_5"></div>
+    <div class="background_polygon polygon polygon_6"></div>
+  </div>
 </header>
 </body>
 
