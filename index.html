@@ -104,31 +104,31 @@
       overflow:hidden;
     }
 
-    .background_polygon .polygon {
+    .background_polygon .child_polygon {
       z-index:11;
     }
 
-    .background_polygon .polygon:nth-child(1) {
+    .background_polygon .child_polygon:nth-child(1) {
       filter:saturate(95%);
       transform:scaleY(.20) scaleX(.34) translateY(200%) translateX(-100%);
     }
 
-    .background_polygon .polygon:nth-child(2) {
+    .background_polygon .child_polygon:nth-child(2) {
       filter:saturate(85%);
       transform:scaleY(.20) scaleX(.34) translateY(200%) translateX(100%);
     }
 
-    .background_polygon .polygon:nth-child(3) {
+    .background_polygon .child_polygon:nth-child(3) {
       filter:saturate(65%);
       transform:scaleY(.40) scaleX(.2) translateY(-75%) translateX(-200%);
     }
 
-    .background_polygon .polygon:nth-child(4) {
+    .background_polygon .child_polygon:nth-child(4) {
       filter:saturate(75%);
       transform:scaleY(.40) scaleX(.2) translateY(-75%) translateX(-100%);
     }
 
-    .background_polygon .polygon:nth-child(5) {
+    .background_polygon .child_polygon:nth-child(5) {
       filter:saturate(85%);
       transform:scaleY(.40) scaleX(.2) translateY(-75%);
     }
@@ -138,7 +138,7 @@
       z-index:1;
     }
 
-    .purple_polygon > .polygon {
+    .purple_polygon > .child_polygon {
       background-color:#330099;
     }
   </style>
@@ -156,11 +156,11 @@
   </section>
 
   <div class="background_polygon purple_polygon">
-    <div class="background_polygon polygon polygon_2"></div>
-    <div class="background_polygon polygon polygon_3"></div>
-    <div class="background_polygon polygon polygon_4"></div>
-    <div class="background_polygon polygon polygon_5"></div>
-    <div class="background_polygon polygon polygon_6"></div>
+    <div class="background_polygon child_polygon"></div>
+    <div class="background_polygon child_polygon"></div>
+    <div class="background_polygon child_polygon"></div>
+    <div class="background_polygon child_polygon"></div>
+    <div class="background_polygon child_polygon"></div>
   </div>
 </header>
 </body>
