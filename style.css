@@ -13,12 +13,13 @@ body {
     position:relative;
     height:auto;
     min-height:100%;
+    color:#fff;
 }
 
 header {
-    height:300px;
+    min-height:300px;
     color:#fff;
-    background-color:#330099;
+    /*background-color:#330099;*/
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -83,7 +84,7 @@ hr {
 .box_relative {
     position:relative;
     display:inline-block;
-    height:300px;
+    min-height:300px;
     width:100%;
     max-width:100%;
 }
@@ -104,7 +105,7 @@ img {
 }
 
 .background_polygon.reverse {
-    transform:skewY(4deg) scaleY(2);
+    transform:skewY(4deg) rotateY(180deg) scaleY(2);
 }
 
 .background_polygon .child_polygon {
@@ -114,27 +115,27 @@ img {
 }
 
 .background_polygon .child_polygon:nth-child(1) {
-    filter:saturate(95%);
+    filter:brightness(95%);
     transform:scale(.33, .2) translate(-100%, 200%);
 }
 
 .background_polygon .child_polygon:nth-child(2) {
-    filter:saturate(85%);
+    filter:brightness(85%);
     transform:scale(.33, .2) translate(100%, 200%);
 }
 
 .background_polygon .child_polygon:nth-child(3) {
-    filter:saturate(65%);
+    filter:brightness(65%);
     transform:scale(.2, .4) translate(-200%, -75%);
 }
 
 .background_polygon .child_polygon:nth-child(4) {
-    filter:saturate(75%);
+    filter:brightness(75%);
     transform:scale(.2, .4) translate(-100%, -75%);
 }
 
 .background_polygon .child_polygon:nth-child(5) {
-    filter:saturate(85%);
+    filter:brightness(85%);
     transform:scale(.2, .4) translate(0, -75%);
 }
 
@@ -160,9 +161,14 @@ img {
     z-index:1;
 }
 
+.orange_polygon, .orange_polygon > .child_polygon {
+    background-color:#cc6600;
+    z-index:1;
+}
+
 .card {
     background-color:#242424;
-    box-shadow: 0 4px 3px rgba(0,0,0,0.4);
+    box-shadow:0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12);
     border-radius:2px;
     margin:0 auto;
     text-align:center;
@@ -176,9 +182,70 @@ img {
     text-align:left;
 }
 
+.card p a {
+    color:#fff;
+    transition: opacity .2s ease-in-out;
+    cursor:pointer;
+}
+.card p a:hover {
+    opacity:.8;
+}
+
+.project_logo {
+    max-width:240px;
+}
+
 .pad {
     padding:15px;
 }
+
+.image-slide-wrap {
+    position:relative;
+    height:0;
+    padding-bottom:56.25%;
+}
+
+[data-image-slide] {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(0);
+    will-change:opacity, visibility, transform;
+    transition:opacity .2s ease-in-out, visibility .2s ease-in-out, transform .2s ease-in-out;
+}
+
+[data-image-slide].active {
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+.image-list {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:row;
+}
+
+.image-list li {
+    padding:0 5px;
+    cursor:pointer;
+    transition:opacity .2s ease-in-out;
+}
+
+.image-list li.selected {
+    opacity:.2;
+}
+
+.image-list li img {
+    pointer-events:none;
+}
+
 
 @media only screen and (min-width: 768px) {
     h1 {
