@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "sudo parcel build index.html --out-dir docs; sudo chmod 777 -R docs/"
+  },
   "devDependencies": {
     "autoprefixer": "^9.5.0",
     "cssnano": "^4.1.10",
