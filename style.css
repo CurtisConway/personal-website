@@ -100,7 +100,7 @@ img {
     left:0;
     bottom:0;
     right:0;
-    transform:skewY(-4deg) scaleY(2);
+    transform:skewY(-4deg) scaleY(1.5);
     overflow:hidden;
 }
 
@@ -126,17 +126,17 @@ img {
 
 .background_polygon .child_polygon:nth-child(3) {
     filter:brightness(65%);
-    transform:scale(.2, .4) translate(-200%, -75%);
+    transform:scale(.2) translate(-200%, -200%);
 }
 
 .background_polygon .child_polygon:nth-child(4) {
     filter:brightness(75%);
-    transform:scale(.2, .4) translate(-100%, -75%);
+    transform:scale(.2) translate(-100%, -200%);
 }
 
 .background_polygon .child_polygon:nth-child(5) {
     filter:brightness(85%);
-    transform:scale(.2, .4) translate(0, -75%);
+    transform:scale(.2) translate(0, -200%);
 }
 
 .background_polygon:hover .child_polygon:nth-child(even) {
