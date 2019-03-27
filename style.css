@@ -19,11 +19,14 @@ body {
 header {
     min-height:300px;
     color:#fff;
-    /*background-color:#330099;*/
     display:flex;
     flex-direction:column;
     justify-content:center;
     position:relative;
+}
+
+header:first-child {
+    margin-top:75px;
 }
 
 header a {
@@ -259,16 +262,25 @@ img {
     }
 }
 
+.purple_polygon {
+    box-shadow:0 0 2px #330099;
+}
 .purple_polygon, .purple_polygon > .child_polygon {
     background-color:#330099;
     z-index:1;
 }
 
+.green_polygon {
+    box-shadow:0 0 2px #009966;
+}
 .green_polygon, .green_polygon > .child_polygon {
     background-color:#009966;
     z-index:1;
 }
 
+.orange_polygon {
+    box-shadow:0 0 2px #cc6600;
+}
 .orange_polygon, .orange_polygon > .child_polygon {
     background-color:#cc6600;
     z-index:1;
@@ -286,8 +298,12 @@ img {
 
 .card p {
     line-height:1.5em;
-    /*margin-bottom:15px;*/
+    margin-bottom:15px;
     text-align:left;
+}
+
+.card p:last-child {
+    margin-bottom:0;
 }
 
 .card p a {
