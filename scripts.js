@@ -57,7 +57,6 @@ class ImageDialog {
 
     setImage(slide){
         if(slide === this.imageSlides.length) this.currentSlide = 0;
-        
         if(slide < 0) this.currentSlide = this.imageSlides.length - 1;
 
         this.imageElement.setAttribute('src', this.imageSlides[this.currentSlide]);
