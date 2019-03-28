@@ -10,6 +10,7 @@ html {
 body {
     margin:0;
     background-color:#242424;
+    padding-top:75px;
     position:relative;
     height:auto;
     min-height:100%;
@@ -25,12 +26,19 @@ header {
     position:relative;
 }
 
-header:first-child {
-    margin-top:75px;
+.social_link {
+    text-decoration:none;
+    display:inline-block;
+    vertical-align:middle;
+    transition:opacity .1s ease-in-out;
 }
 
-header a {
-    text-decoration:none;
+.social_link:hover:not(:focus) {
+    opacity:.75;
+}
+
+header a svg {
+    width:20px;
 }
 
 section {
@@ -50,9 +58,7 @@ i {
     transition: opacity .2s ease-in-out;
 }
 
-i:hover:not(:focus) {
-    opacity:.75;
-}
+
 
 h1 {
     margin:0 0 0 -7px;
@@ -353,20 +359,104 @@ img {
     padding:0;
     display:flex;
     flex-direction:row;
+    flex-wrap:wrap;
 }
 
 .image-list li {
-    padding:0 5px;
+    padding:5px;
     cursor:pointer;
     transition:opacity .2s ease-in-out;
-}
-
-.image-list li.selected {
-    opacity:.2;
+    display:flex;
+    flex-direction:column;
+    flex-basis:50%;
+    max-width:50%;
 }
 
 .image-list li img {
     pointer-events:none;
+}
+
+.image_dialog {
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:100;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    display:none;
+    transition:opacity .2s ease-in-out;
+}
+
+.image_dialog.active {
+    display:flex;
+    animation-name:dialogFadeIn;
+    animation-iteration-count:1;
+    animation-duration:.4s;
+}
+
+@keyframes dialogFadeIn {
+    from {
+        opacity:0;
+    }
+
+    to {
+        opacity:1;
+    }
+}
+
+.dialog_background {
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:101;
+    background:rgba(0,0,0,.6);
+}
+
+.dialog_foreground {
+    background-color:#2d2d2d;
+    box-shadow:0 2px 4px rgba(0,0,0,.8);
+    position:relative;
+    z-index:102;
+    padding:10px;
+}
+
+.dialog_button {
+    position:absolute;
+    height:50px;
+    width:50px;
+    font-size:32px;
+    background-color:#2d2d2d;
+    color:#fff;
+    border:none;
+    outline:none;
+    box-shadow:0 2px 4px rgba(0,0,0,.8);
+    margin-top:-25px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.close_dialog {
+    position:fixed;
+    top:10px;
+    right:10px;
+    margin-top:0;
+    font-size:24px;
+    line-height:24px;
+}
+
+.previous_image {
+    top:50%;
+    left:-20px;
+}
+
+.next_image {
+    top:50%;
+    right:-20px;
 }
 
 
