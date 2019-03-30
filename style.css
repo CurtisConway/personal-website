@@ -118,7 +118,7 @@ img {
 
 .background_polygon .child_polygon {
     z-index:11;
-    animation-timing-function: cubic-bezier(0, 2, 1, 3);
+    animation-timing-function: cubic-bezier(0.42, 1, 0.58, 3);
     animation-iteration-count: infinite;
     animation-duration: 60s;
 }
