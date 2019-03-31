@@ -389,6 +389,7 @@ img {
     padding:30px;
     display:none;
     transition:opacity .2s ease-in-out;
+    transform:translateX(0);
 }
 
 .image_dialog.active {
@@ -423,7 +424,10 @@ img {
     box-shadow:0 2px 4px rgba(0,0,0,.8);
     position:relative;
     z-index:102;
-    padding:10px;
+    width:100%;
+    max-width:1920px;
+    height:0;
+    padding-bottom:49.55%;
 }
 
 .dialog_button {
@@ -438,6 +442,13 @@ img {
     box-shadow:0 2px 4px rgba(0,0,0,.8);
     margin-top:-25px;
     font-family: 'Montserrat', sans-serif;
+    transition:transform .1s;
+    transform:scale(1);
+    z-index:10;
+}
+
+.dialog_button:active {
+    transform:scale(0.9);
 }
 
 .close_dialog {
@@ -457,6 +468,84 @@ img {
 .next_image {
     top:50%;
     right:-20px;
+}
+
+.image_slide {
+    animation-duration:.6s;
+    animation-timing-function:cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    animation-iteration-count: 1;
+    position:absolute;
+    height:auto;
+    top:0;
+    left:0;
+    z-index:1;
+    opacity:0;
+}
+
+.image_slide.active {
+    z-index:2;
+    opacity:1;
+}
+
+.enter_right {
+    animation-name:enterRight;
+}
+.exit_right {
+    animation-name:exitRight;
+}
+.enter_left {
+    animation-name:enterLeft;
+}
+.exit_left {
+    animation-name:exitLeft;
+}
+
+@keyframes enterRight {
+    from {
+        opacity:0;
+        transform:translateX(-100%);
+    }
+
+    to {
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes exitRight {
+    from {
+        opacity:1;
+        transform:translateX(0);
+    }
+
+    to {
+        opacity:0;
+        transform:translateX(100%);
+    }
+}
+
+@keyframes enterLeft {
+    from {
+        opacity:0;
+        transform:translateX(100%);
+    }
+
+    to {
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes exitLeft {
+    from {
+        opacity:1;
+        transform:translateX(0);
+    }
+
+    to {
+        opacity:0;
+        transform:translateX(-100%);
+    }
 }
 
 

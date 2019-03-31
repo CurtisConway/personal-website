@@ -18,9 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 class ImageDialog {
     constructor(element){
         this.dialogElement = element;
-        this.imageElement = this.dialogElement.querySelector('img');
+        this.activeImageElement = this.dialogElement.querySelector('img.active');
+        this.inactiveImageElement = this.dialogElement.querySelector('img.inactive');
         this.imageSlides = [];
         this.currentSlide = 0;
+        this.animating = false;
+
+        window.ImageDialogOpen = false;
+        document.addEventListener('keyup', event => this.enableKeyboardControls(event));
     }
 
     open(thumb){
@@ -31,22 +36,58 @@ class ImageDialog {
 
         this.currentSlide = this.imageSlides.indexOf(imageToShow);
 
+        window.ImageDialogOpen = true;
+
         this.dialogElement.classList.add('active');
+        this.dialogElement.setAttribute('aria-hidden', 'false');
         this.setImage();
     }
 
     close(){
         this.dialogElement.classList.remove('active');
+        this.dialogElement.setAttribute('aria-hidden', 'true');
+
+        window.ImageDialogOpen = false;
     }
 
     nextSlide(){
-        this.currentSlide++;
-        this.setImage(this.currentSlide);
+        if(!this.animating){
+            this.currentSlide++;
+            this.setImage(this.currentSlide);
+            this.nextSlideAnimation();
+        }
     }
 
     previousSlide(){
-        this.currentSlide--;
-        this.setImage(this.currentSlide);
+        if(!this.animating) {
+            this.currentSlide--;
+            this.setImage(this.currentSlide);
+            this.previousSlideAnimation();
+        }
+    }
+
+    nextSlideAnimation(){
+        this.activeImageElement.classList.add('enter_left');
+        this.inactiveImageElement.classList.add('exit_left');
+        this.animating = true;
+
+        setTimeout(() => {
+            this.activeImageElement.classList.remove('enter_left');
+            this.inactiveImageElement.classList.remove('exit_left');
+            this.animating = false;
+        }, 600);
+    }
+
+    previousSlideAnimation(){
+        this.activeImageElement.classList.add('enter_right');
+        this.inactiveImageElement.classList.add('exit_right');
+        this.animating = true;
+
+        setTimeout(() => {
+            this.activeImageElement.classList.remove('enter_right');
+            this.inactiveImageElement.classList.remove('exit_right');
+            this.animating = false;
+        }, 600);
     }
 
     getSlides(thumbs){
@@ -56,10 +97,27 @@ class ImageDialog {
     }
 
     setImage(slide){
+        const activeImageElement = this.activeImageElement;
+        const inactiveImageElement = this.inactiveImageElement;
         if(slide === this.imageSlides.length) this.currentSlide = 0;
         if(slide < 0) this.currentSlide = this.imageSlides.length - 1;
 
-        this.imageElement.setAttribute('src', this.imageSlides[this.currentSlide]);
+        inactiveImageElement.setAttribute('src', this.imageSlides[this.currentSlide]);
+        inactiveImageElement.classList.add('active');
+        inactiveImageElement.classList.remove('inactive');
+        activeImageElement.classList.add('inactive');
+        activeImageElement.classList.remove('active');
+
+        this.activeImageElement = inactiveImageElement;
+        this.inactiveImageElement = activeImageElement;
+    }
+
+    enableKeyboardControls(event){
+        if(window.ImageDialogOpen === true){
+            if(event.key === 'ArrowRight') this.nextSlide();
+            if(event.key === 'ArrowLeft') this.previousSlide();
+            if(event.key === 'Escape') this.close();
+        }
     }
 }
 
