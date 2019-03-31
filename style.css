@@ -302,7 +302,7 @@ img {
     z-index:20;
 }
 
-.card p {
+.card p, .card ul {
     line-height:1.5em;
     margin-bottom:15px;
     text-align:left;
