@@ -30,7 +30,7 @@ class ImageDialog {
 
     open(thumb){
         const imageThumbs = thumb.parentElement.querySelectorAll('[data-image-slide-thumb]');
-        const imageToShow = thumb.querySelector('img').getAttribute('src');
+        const imageToShow = thumb.querySelector('img').dataset['originalSource'];
 
         this.getSlides(imageThumbs);
 
@@ -92,7 +92,7 @@ class ImageDialog {
 
     getSlides(thumbs){
         this.imageSlides = Array.from(thumbs).map(thumb => {
-            return thumb.querySelector('img').getAttribute('src');
+            return thumb.querySelector('img').dataset['originalSource'];
         });
     }
 
