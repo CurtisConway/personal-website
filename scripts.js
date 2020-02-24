@@ -1,16 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const imageDialog = new ImageDialog(document.querySelector('.image_dialog'));
+    // const imageDialog = new ImageDialog(document.querySelector('.image_dialog'));
 
     document.addEventListener('click', event => {
         const element = event.target;
 
-        if(element.matches('[data-image-slide-thumb]')) imageDialog.open(element);
+        // if(element.matches('[data-image-slide-thumb]')) {
+        //     imageDialog.open(element);
+        // }
+        //
+        // if(element.matches('.close_dialog, .dialog_background')) {
+        //     imageDialog.close();
+        // }
+        //
+        // if(element.matches('.next_image')) {
+        //     imageDialog.nextSlide();
+        // }
+        //
+        // if(element.matches('.previous_image')) {
+        //     imageDialog.previousSlide();
+        // }
 
-        if(element.matches('.close_dialog, .dialog_background')) imageDialog.close();
-
-        if(element.matches('.next_image')) imageDialog.nextSlide();
-
-        if(element.matches('.previous_image')) imageDialog.previousSlide();
+        if(element.matches('.color_mode_button')) {
+            document.body.classList.toggle('light_mode');
+        }
     });
 
 });
@@ -113,10 +125,16 @@ class ImageDialog {
     }
 
     enableKeyboardControls(event){
-        if(window.ImageDialogOpen === true){
-            if(event.key === 'ArrowRight') this.nextSlide();
-            if(event.key === 'ArrowLeft') this.previousSlide();
-            if(event.key === 'Escape') this.close();
+        if(window.ImageDialogOpen === true) {
+            if(event.key === 'ArrowRight') {
+                this.nextSlide();
+            }
+            if(event.key === 'ArrowLeft') {
+                this.previousSlide();
+            }
+            if(event.key === 'Escape') {
+                this.close();
+            }
         }
     }
 }
