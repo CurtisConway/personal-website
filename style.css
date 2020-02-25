@@ -101,6 +101,21 @@ img {
     margin:0 auto;
 }
 
+.container {
+    max-width:100%;
+    width:1200px;
+    margin:0 auto;
+    z-index:2;
+}
+
+.container.right section h1 {
+    text-align:right;
+}
+
+.container.right section {
+    margin:0 0 0 auto;
+}
+
 .background_polygon {
     position:absolute;
     top:-50px;
@@ -375,7 +390,6 @@ body.light_mode ul {
 body.light_mode a {
     color:#0000EE;
 }
-
 
 .image-slide-wrap {
     position:relative;
