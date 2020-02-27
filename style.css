@@ -343,7 +343,7 @@ img {
     z-index:1;
 }
 
-.card {
+.card, .avatar {
     background-color:#2d2d2d;
     box-shadow:0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12);
     border-radius:2px;
@@ -351,6 +351,14 @@ img {
     text-align:center;
     position:relative;
     z-index:20;
+}
+
+.avatar {
+    border-radius:50%;
+    height:200px;
+    width:200px;
+    padding:5px;
+    background-color:#2d2d2d;
 }
 
 .card p:last-child, .card ul:last-child {
@@ -398,9 +406,14 @@ body.light_mode .color_mode_button svg {
     fill:#010101;
 }
 
-body.light_mode,
+body.light_mode {
+    color:#010101;
+    background-color:#e4e4e4;
+}
+
 body.light_mode .card,
-body.light_mode .color_mode_button {
+body.light_mode .color_mode_button,
+body.light_mode .avatar {
     color:#010101;
     background-color:#efefef;
 }
