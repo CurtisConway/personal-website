@@ -372,6 +372,10 @@ img {
     z-index:20;
 }
 
+.card {
+    border-radius:5px;
+}
+
 .avatar {
     border-radius:50%;
     height:200px;
@@ -418,6 +422,10 @@ img {
     padding:0;
     border-radius:50%;
     background:#2d2d2d;
+}
+
+button {
+    cursor:pointer;
 }
 
 button svg {
@@ -508,6 +516,7 @@ body.light_mode .image_list li {
     flex-direction:column;
     flex:0 0 33.33%;
     overflow:hidden;
+    border-radius:8px;
 }
 
 .image_list li div {
