@@ -420,12 +420,12 @@ img {
     background:#2d2d2d;
 }
 
-.color_mode_button svg {
+button svg {
     pointer-events:none;
     fill:#fff;
 }
 
-body.light_mode .color_mode_button svg {
+body.light_mode button svg {
     fill:#010101;
 }
 
@@ -439,7 +439,7 @@ body.light_mode .client_logo {
 }
 
 body.light_mode .card,
-body.light_mode .color_mode_button,
+body.light_mode button,
 body.light_mode .avatar {
     color:#010101;
     background-color:#efefef;
@@ -461,6 +461,10 @@ body.light_mode .skills_list li {
 body.light_mode .skills_list li.highlight {
     background-color:#cecece;
     font-weight:700;
+}
+
+body.light_mode .image_list li {
+    border-color:#efefef;
 }
 
 .image-slide-wrap {
@@ -487,27 +491,37 @@ body.light_mode .skills_list li.highlight {
     transform:scale(1);
 }
 
-.image-list {
+.image_list {
     list-style-type:none;
-    margin:0;
+    margin:0 -5px 0 -5px;
     padding:0;
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
 }
 
-.image-list li {
-    padding:5px;
+.image_list li {
+    border:5px solid #2d2d2d;
     cursor:pointer;
     transition:opacity .2s ease-in-out;
     display:flex;
     flex-direction:column;
-    flex-basis:50%;
-    max-width:50%;
+    flex:0 0 33.33%;
+    overflow:hidden;
 }
 
-.image-list li img {
+.image_list li div {
+    height:0;
+    padding-bottom:100%;
+    background-size:cover;
+    background-position:center;
+    transform:scale(1);
+    transition:transform .2s ease-in-out;
     pointer-events:none;
+}
+
+.image_list li:hover div {
+    transform:scale(1.25);
 }
 
 .image_dialog {
@@ -554,21 +568,20 @@ body.light_mode .skills_list li.highlight {
 }
 
 .dialog_foreground {
-    /*background-color:#2d2d2d;*/
-    /*box-shadow:0 2px 4px rgba(0,0,0,.8);*/
-    /*overflow:hidden;*/
+    background-color:#2d2d2d;
+    box-shadow:0 2px 4px rgba(0,0,0,.8);
+    overflow:hidden;
     position:relative;
     z-index:102;
     width:100%;
-    max-width:1920px;
     height:0;
-    padding-bottom:49.55%;
 }
 
 .dialog_button {
-    position:absolute;
-    height:50px;
-    width:50px;
+    position:fixed;
+    height:45px;
+    width:45px;
+    border-radius:50%;
     font-size:32px;
     background-color:#2d2d2d;
     color:#fff;
@@ -582,12 +595,11 @@ body.light_mode .skills_list li.highlight {
     z-index:10;
 }
 
-.dialog_button:active {
+.dialog_button:active, .color_mode_button:active {
     transform:scale(0.9);
 }
 
 .close_dialog {
-    position:fixed;
     top:10px;
     right:10px;
     margin-top:0;
@@ -597,24 +609,46 @@ body.light_mode .skills_list li.highlight {
 
 .previous_image {
     top:50%;
-    left:-20px;
+    left:20px;
 }
 
 .next_image {
     top:50%;
-    right:-20px;
+    right:20px;
 }
 
 .image_slide {
     animation-duration:.6s;
     animation-timing-function:cubic-bezier(0.25, 0.1, 0.25, 1.0);
     animation-iteration-count: 1;
-    position:absolute;
-    height:auto;
-    top:0;
-    left:0;
+    position:fixed;
+    top:50%;
+    left:50%;
+    overflow:hidden;
+    max-width:calc(100% - 30px);
+    width:100%;
+    transform:translate(-50%, -50%);
     z-index:1;
-    opacity:0;
+    opacity:1;
+}
+
+.image_slide:before {
+    content: 'Loading....';
+    position:absolute;
+    top:50%;
+    left:50%;
+    font-size:20px;
+    color:#fff;
+    z-index:1;
+}
+
+.image_slide img {
+    position:relative;
+    max-height:100%;
+    max-width:none;
+    height:auto;
+    width:100%;
+    z-index:2;
 }
 
 .image_slide.active {
@@ -692,4 +726,25 @@ body.light_mode .skills_list li.highlight {
     .show_mobile_only {
         display:none;
     }
+
+    .image_list li {
+        flex:0 0 25%;
+    }
 }
+
+@media only screen and (min-width: 1200px) {
+    .show_mobile_only {
+        display:none;
+    }
+
+    .image_list li {
+        flex:0 0 20%;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .dialog_foreground {
+        max-width:1920px;
+    }
+}
+
