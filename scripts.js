@@ -1,141 +1,162 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // const imageDialog = new ImageDialog(document.querySelector('.image_dialog'));
+import data from './data';
+
+window.onload = () => {
+    const imageListDialog = new ImageListDialog(data);
 
     document.addEventListener('click', event => {
         const element = event.target;
 
-        // if(element.matches('[data-image-slide-thumb]')) {
-        //     imageDialog.open(element);
-        // }
-        //
-        // if(element.matches('.close_dialog, .dialog_background')) {
-        //     imageDialog.close();
-        // }
-        //
-        // if(element.matches('.next_image')) {
-        //     imageDialog.nextSlide();
-        // }
-        //
-        // if(element.matches('.previous_image')) {
-        //     imageDialog.previousSlide();
-        // }
+        if(element.matches('.image_list li')) {
+            imageListDialog.openDialog(element);
+        }
+
+        if(element.matches('.close_dialog, .dialog_background')) {
+            imageListDialog.closeDialog();
+        }
+
+        if(element.matches('.next_image')) {
+            imageListDialog.nextSlide();
+        }
+
+        if(element.matches('.previous_image')) {
+            imageListDialog.previousSlide();
+        }
 
         if(element.matches('.color_mode_button')) {
             document.body.classList.toggle('light_mode');
         }
     });
+};
 
-});
-
-class ImageDialog {
-    constructor(element){
-        this.dialogElement = element;
-        this.activeImageElement = this.dialogElement.querySelector('img.active');
-        this.inactiveImageElement = this.dialogElement.querySelector('img.inactive');
-        this.imageSlides = [];
+class ImageListDialog {
+    constructor(data){
+        const imageLists = document.querySelectorAll('.image_list');
+        this.data = data;
+        this.imageDialog = document.querySelector('.image_dialog');
+        this.imageSlide = document.querySelector('.image_slide');
+        this.imageSlideImage = this.imageSlide.querySelector('img');
+        this.cdnUrl = 'https://res.cloudinary.com/dloxgdltu/image/upload';
+        this.dialogActive = false;
+        this.activeListId = null;
+        this.dialogSlides = [];
         this.currentSlide = 0;
-        this.animating = false;
 
-        window.ImageDialogOpen = false;
-        document.addEventListener('keyup', event => this.enableKeyboardControls(event));
-    }
 
-    open(thumb){
-        const imageThumbs = thumb.parentElement.querySelectorAll('[data-image-slide-thumb]');
-        const imageToShow = thumb.querySelector('img').dataset['originalSource'];
+        this.imageType = this.getImageTypeByBreakpoint();
+        this.initLists(imageLists);
 
-        this.getSlides(imageThumbs);
+        // Re initialize the lists if the window is resized to a different orientation/breakpoint
+        window.addEventListener('resize', () => {
+            const oldImageType = this.imageType;
+            this.imageType = this.getImageTypeByBreakpoint();
 
-        this.currentSlide = this.imageSlides.indexOf(imageToShow);
+            if(oldImageType !== this.imageType) {
+                this.initLists(imageLists);
 
-        window.ImageDialogOpen = true;
-
-        this.dialogElement.classList.add('active');
-        this.dialogElement.setAttribute('aria-hidden', 'false');
-        this.setImage();
-    }
-
-    close(){
-        this.dialogElement.classList.remove('active');
-        this.dialogElement.setAttribute('aria-hidden', 'true');
-
-        window.ImageDialogOpen = false;
-    }
-
-    nextSlide(){
-        if(!this.animating){
-            this.currentSlide++;
-            this.setImage(this.currentSlide);
-            this.nextSlideAnimation();
-        }
-    }
-
-    previousSlide(){
-        if(!this.animating) {
-            this.currentSlide--;
-            this.setImage(this.currentSlide);
-            this.previousSlideAnimation();
-        }
-    }
-
-    nextSlideAnimation(){
-        this.activeImageElement.classList.add('enter_left');
-        this.inactiveImageElement.classList.add('exit_left');
-        this.animating = true;
-
-        setTimeout(() => {
-            this.activeImageElement.classList.remove('enter_left');
-            this.inactiveImageElement.classList.remove('exit_left');
-            this.animating = false;
-        }, 600);
-    }
-
-    previousSlideAnimation(){
-        this.activeImageElement.classList.add('enter_right');
-        this.inactiveImageElement.classList.add('exit_right');
-        this.animating = true;
-
-        setTimeout(() => {
-            this.activeImageElement.classList.remove('enter_right');
-            this.inactiveImageElement.classList.remove('exit_right');
-            this.animating = false;
-        }, 600);
-    }
-
-    getSlides(thumbs){
-        this.imageSlides = Array.from(thumbs).map(thumb => {
-            return thumb.querySelector('img').dataset['originalSource'];
+                if(this.activeListId != null){
+                    this.getSlides(this.activeListId);
+                }
+            }
         });
     }
 
-    setImage(slide){
-        const activeImageElement = this.activeImageElement;
-        const inactiveImageElement = this.inactiveImageElement;
-        if(slide === this.imageSlides.length) this.currentSlide = 0;
-        if(slide < 0) this.currentSlide = this.imageSlides.length - 1;
+    initLists(lists) {
+        Array.from(lists).forEach((list) => {
+            const listId = list.getAttribute('id');
+            const data = this.data[listId] || {};
+            const images = data[this.imageType];
 
-        inactiveImageElement.setAttribute('src', this.imageSlides[this.currentSlide]);
-        inactiveImageElement.classList.add('active');
-        inactiveImageElement.classList.remove('inactive');
-        activeImageElement.classList.add('inactive');
-        activeImageElement.classList.remove('active');
+            // Clear the list if it has items already
+            list.innerHTML = '';
 
-        this.activeImageElement = inactiveImageElement;
-        this.inactiveImageElement = activeImageElement;
+            images.forEach((image) => {
+                const item = document.createElement('li');
+                item.dataset['listId'] = listId;
+                item.innerHTML = `<div style="background-image:url(${this.getThumb(image)});"></div>`;
+
+                list.appendChild(item);
+            });
+        });
     }
 
-    enableKeyboardControls(event){
-        if(window.ImageDialogOpen === true) {
-            if(event.key === 'ArrowRight') {
-                this.nextSlide();
-            }
-            if(event.key === 'ArrowLeft') {
-                this.previousSlide();
-            }
-            if(event.key === 'Escape') {
-                this.close();
-            }
+    getThumb(image) {
+        const baseUrl = `${this.cdnUrl}/ar_1:1,c_fill,g_auto,w_250`;
+        return `${baseUrl}/${image}`;
+    }
+
+    getImageTypeByBreakpoint() {
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            return 'desktop';
         }
+
+        if (
+            window.matchMedia('(min-width: 760px)').matches &&
+            window.matchMedia("(orientation: portrait)").matches
+        ) {
+            return 'tablet';
+        }
+
+        return 'mobile';
+    }
+
+    openDialog(listItem) {
+        this.imageDialog.classList.add('active');
+        this.dialogActive = true;
+        this.activeListId = listItem.dataset['listId'];
+        this.currentSlide = Array.from(listItem.parentElement.children).indexOf(listItem);
+
+        this.getSlides();
+    }
+
+    closeDialog() {
+        this.imageDialog.classList.remove('active');
+        this.dialogActive = false;
+    }
+
+    getSlides() {
+        this.dialogSlides = data[this.activeListId][this.imageType];
+        const currentSlide = this.dialogSlides[this.currentSlide];
+
+        this.activeSlide = this.getSlideUrl(currentSlide);
+
+        this.imageSlideImage.src = this.activeSlide;
+
+        this.imageSlideImage.addEventListener('load', () => {
+            this.preloadSlides(this.dialogSlides.filter(slide => slide !== currentSlide));
+        });
+    }
+
+    preloadSlides(slides = []) {
+        slides.forEach(slide => {
+            const image = new Image();
+            image.src = this.getSlideUrl(slide);
+        });
+    }
+
+    getSlideUrl(slide) {
+        return `${this.cdnUrl}/${slide}`;
+    }
+
+    nextSlide() {
+        this.currentSlide += 1;
+
+        if(this.currentSlide >= this.dialogSlides.length) {
+            this.currentSlide = 0;
+        }
+
+        this.activeSlide = this.getSlideUrl(this.dialogSlides[this.currentSlide]);
+        this.imageSlideImage.src = this.activeSlide;
+    }
+
+    previousSlide() {
+        this.currentSlide -= 1;
+
+        if(this.currentSlide < 0) {
+            this.currentSlide = this.dialogSlides.length - 1;
+        }
+
+        this.activeSlide = this.dialogSlides[this.currentSlide];
+        this.imageSlideImage.src = this.activeSlide;
     }
 }
 
