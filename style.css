@@ -32,6 +32,7 @@ header {
     flex-direction:row;
     transition:opacity .1s ease-in-out;
     line-height:20px;
+    color:#fff;
 }
 
 .social_link:hover:not(:focus) {
@@ -150,6 +151,11 @@ img {
     font-weight:700;
 }
 
+.client_logo {
+    max-width:90%;
+    margin-bottom:15px;
+}
+
 .container.right section h1 {
     text-align:right;
 }
@@ -179,7 +185,7 @@ img {
     /*animation-timing-function: cubic-bezier(0.42, 1, 0.58, 3);*/
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-duration: 60s;
+    animation-duration: 20s;
 }
 
 .background_polygon.reverse .child_polygon {
@@ -372,6 +378,10 @@ img {
     width:200px;
     padding:5px;
     background-color:#2d2d2d;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
 .card p:last-child, .card ul:last-child {
@@ -424,6 +434,10 @@ body.light_mode {
     background-color:#e4e4e4;
 }
 
+body.light_mode .client_logo {
+    filter:invert(100%);
+}
+
 body.light_mode .card,
 body.light_mode .color_mode_button,
 body.light_mode .avatar {
@@ -436,7 +450,7 @@ body.light_mode ul {
     color:#010101;
 }
 
-body.light_mode a {
+body.light_mode a:not(.social_link) {
     color:#0000EE;
 }
 
