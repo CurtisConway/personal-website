@@ -27,18 +27,26 @@ header {
 }
 
 .social_link {
-    text-decoration:none;
-    display:inline-block;
-    vertical-align:middle;
+    display:flex;
+    align-items:center;
+    flex-direction:row;
     transition:opacity .1s ease-in-out;
+    line-height:20px;
 }
 
 .social_link:hover:not(:focus) {
     opacity:.75;
 }
 
+header a {
+    color:#fff;
+    vertical-align:baseline;
+}
+
 header a svg {
     width:20px;
+    margin-right:10px;
+    text-decoration:none;
 }
 
 section {
@@ -135,6 +143,11 @@ img {
     border:1px solid #fff;
     line-height:2.25em;
     font-size:18px;
+}
+
+.skills_list li.highlight {
+    background-color:#4d4d4d;
+    font-weight:700;
 }
 
 .container.right section h1 {
@@ -429,6 +442,11 @@ body.light_mode a {
 
 body.light_mode .skills_list li {
     border-color:#010101;
+}
+
+body.light_mode .skills_list li.highlight {
+    background-color:#cecece;
+    font-weight:700;
 }
 
 .image-slide-wrap {
