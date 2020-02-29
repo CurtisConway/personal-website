@@ -26,6 +26,11 @@ header {
     position:relative;
 }
 
+.social_links {
+    display:flex;
+    flex-direction:row;
+}
+
 .social_link {
     display:flex;
     align-items:center;
@@ -33,6 +38,7 @@ header {
     transition:opacity .1s ease-in-out;
     line-height:20px;
     color:#fff;
+    margin-right:30px;
 }
 
 .social_link:hover:not(:focus) {
@@ -48,6 +54,7 @@ header a svg {
     width:20px;
     margin-right:10px;
     text-decoration:none;
+    fill:#fff;
 }
 
 section {
@@ -519,17 +526,13 @@ body.light_mode .image_list li {
     border-radius:8px;
 }
 
-.image_list li div {
-    height:0;
-    padding-bottom:100%;
-    background-size:cover;
-    background-position:center;
+.image_list li img {
     transform:scale(1);
     transition:transform .2s ease-in-out;
     pointer-events:none;
 }
 
-.image_list li:hover div {
+.image_list li:hover img {
     transform:scale(1.25);
 }
 

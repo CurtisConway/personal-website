@@ -72,7 +72,7 @@ class ImageListDialog {
             images.forEach((image) => {
                 const item = document.createElement('li');
                 item.dataset['listId'] = listId;
-                item.innerHTML = `<div style="background-image:url(${this.getThumb(image)});"></div>`;
+                item.innerHTML = `<img src="${this.getThumb(image)}" />`;
 
                 list.appendChild(item);
             });
@@ -85,13 +85,13 @@ class ImageListDialog {
     }
 
     getImageTypeByBreakpoint() {
-        if (window.matchMedia("(orientation: landscape)").matches) {
+        if (window.matchMedia('(orientation: landscape)').matches) {
             return 'desktop';
         }
 
         if (
             window.matchMedia('(min-width: 760px)').matches &&
-            window.matchMedia("(orientation: portrait)").matches
+            window.matchMedia('(orientation: portrait)').matches
         ) {
             return 'tablet';
         }
