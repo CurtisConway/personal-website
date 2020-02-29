@@ -155,7 +155,7 @@ class ImageListDialog {
             this.currentSlide = this.dialogSlides.length - 1;
         }
 
-        this.activeSlide = this.dialogSlides[this.currentSlide];
+        this.activeSlide = this.getSlideUrl(this.dialogSlides[this.currentSlide]);
         this.imageSlideImage.src = this.activeSlide;
     }
 }
