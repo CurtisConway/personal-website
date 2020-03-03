@@ -72,7 +72,7 @@ class ImageListDialog {
             images.forEach((image) => {
                 const item = document.createElement('li');
                 item.dataset['listId'] = listId;
-                item.innerHTML = `<img src="${this.getThumb(image)}" />`;
+                item.innerHTML = `<img src="${this.getThumb(image)}" alt="Musora Screenshot Thumbnail" />`;
 
                 list.appendChild(item);
             });
