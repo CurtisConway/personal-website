@@ -30,6 +30,11 @@ header {
 .social_links {
     display:flex;
     flex-direction:row;
+    flex-wrap:wrap;
+}
+
+.social_link:last-child {
+    margin-right:0;
 }
 
 .social_link {
@@ -40,6 +45,7 @@ header {
     line-height:20px;
     color:#fff;
     margin-right:30px;
+    margin-bottom:10px;
 }
 
 .social_link:hover:not(:focus) {
