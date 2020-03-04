@@ -25,6 +25,21 @@ window.onload = () => {
         if(element.matches('.color_mode_button')) {
             document.body.classList.toggle('light_mode');
         }
+
+        if(element.matches('.desktop_button')) {
+            imageListDialog.imageType = 'desktop';
+            imageListDialog.getSlides();
+        }
+
+        if(element.matches('.tablet_button')) {
+            imageListDialog.imageType = 'tablet';
+            imageListDialog.getSlides();
+        }
+
+        if(element.matches('.mobile_button')) {
+            imageListDialog.imageType = 'mobile';
+            imageListDialog.getSlides();
+        }
     });
 };
 
@@ -40,7 +55,6 @@ class ImageListDialog {
         this.activeListId = null;
         this.dialogSlides = [];
         this.currentSlide = 0;
-
 
         this.imageType = this.getImageTypeByBreakpoint();
         this.initLists(imageLists);
@@ -119,11 +133,13 @@ class ImageListDialog {
 
         this.activeSlide = this.getSlideUrl(currentSlide);
 
+        this.imageDialog.classList.remove('desktop', 'mobile', 'tablet');
+        this.imageDialog.classList.add(this.imageType);
         this.imageSlideImage.src = this.activeSlide;
 
-        this.imageSlideImage.addEventListener('load', () => {
+        this.imageSlideImage.onload = () => {
             this.preloadSlides(this.dialogSlides.filter(slide => slide !== currentSlide));
-        });
+        };
     }
 
     preloadSlides(slides = []) {
