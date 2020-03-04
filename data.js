@@ -36,7 +36,7 @@ export default {
             'v1582936561/pianote_soundslice_tablet_usxlqj.jpg',
             'v1582936561/pianote_profile_tablet_fdlssx.jpg',
             'v1582936560/pianote_forums_tablet_caiyd4.jpg',
-            'v1582934532/pianote_thread_mobile_v0kl12.jpg',
+            'v1582936561/pianote_thread_tablet_zcw9t3.jpg',
         ],
         desktop: [
             'v1582930947/drumeo_home_desktop_lxonpx.jpg',
