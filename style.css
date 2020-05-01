@@ -196,15 +196,15 @@ img {
 
 .background_polygon .child_polygon {
     z-index:11;
-    /*animation-timing-function: cubic-bezier(0.42, 1, 0.58, 3);*/
-    animation-timing-function: linear;
+    animation-timing-function: cubic-bezier(0.42, 1, 0.58, 3);
+    /*animation-timing-function: linear;*/
     animation-iteration-count: infinite;
-    animation-duration: 20s;
+    animation-duration: 45s;
 }
 
 .background_polygon.reverse .child_polygon {
     will-change:transform;
-    animation-delay:-30s;
+    animation-delay:-45s;
 }
 
 .background_polygon .child_polygon:nth-child(1) {
