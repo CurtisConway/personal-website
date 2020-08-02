@@ -473,8 +473,8 @@ body.light_mode .avatar {
     background-color:#efefef;
 }
 
-body.light_mode p,
-body.light_mode ul {
+body.light_mode card p,
+body.light_mode card ul {
     color:#010101;
 }
 
