@@ -19,7 +19,7 @@ body {
 }
 
 header {
-    height:200px;
+    min-height:200px;
     color:#fff;
     display:flex;
     flex-direction:column;
@@ -44,7 +44,7 @@ header {
     transition:opacity .1s ease-in-out;
     line-height:20px;
     color:#fff;
-    margin-right:30px;
+    margin-right:20px;
     margin-bottom:10px;
 }
 
