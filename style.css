@@ -95,6 +95,12 @@ h1 {
 
 p.subheading {
     margin:0 0 20px;
+    font-weight:700;
+    font-size:20px;
+    z-index:10;
+}
+p.caption {
+    margin:0;
     font-weight:300;
     font-size:16px;
     z-index:10;
