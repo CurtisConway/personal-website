@@ -1,12 +1,12 @@
 {
   "scripts": {
-    "prebuild": "rm -rf docs/*.png;rm -rf docs/*.js;rm -rf docs/*.css;rm -rf docs/*.html;rm -rf docs/*.map",
-    "watch": "parcel index.html --log-level 4 --no-cache",
-    "build": "parcel build index.html --log-level 4 --no-cache"
+    "prebuild": "rm -rf dist/*.png;rm -rf dist/*.js;rm -rf dist/*.css;rm -rf dist/*.html;rm -rf dist/*.map",
+    "start": "parcel serve ./index.html",
+    "build": "parcel build ./index.html"
   },
   "devDependencies": {
-    "autoprefixer": "^9.5.0",
-    "cssnano": "^4.1.10",
-    "postcss-modules": "^1.4.1"
+    "autoprefixer": "^10.2.6",
+    "parcel": "^2.0.0-beta.3.1",
+    "postcss": "^8.3.5"
   }
 }

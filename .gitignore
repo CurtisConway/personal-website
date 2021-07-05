@@ -1,9 +1,6 @@
 .idea
-.idea/*
 .cache
-.cache/*
+.parcel-cache
 false
-false/*
 node_modules
-node_modules/*
 dist
