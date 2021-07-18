@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Curt Conway</title>
-    <meta name="description" content="Hi, I'm Curt. I make cool shit on the internet.">
+    <meta name="description" content="Hi, I'm Curt. Freelance Full-stack Developer.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#330099">
     <link rel="icon" href="favicon.ico">
@@ -18,9 +18,9 @@
 </button>
 <header>
     <div class="container">
-        <section>
-            <h1>Hi, <br class="show_mobile_only">I'm Curt.</h1>
-            <p class="subheading">
+        <section aria-labelledby="mainHeading" aria-describedby="mainDescription">
+            <h1 id="mainHeading">Hi, <br class="show_mobile_only" aria-hidden="true">I'm Curt.</h1>
+            <p id="mainDescription" class="subheading">
                 <strong>Freelance Full-stack Developer</strong>
             </p>
             <p class="caption">I'm not a scientist - I'm an artist.</p>
@@ -28,6 +28,7 @@
             <div class="social_links">
                 <a
                     href="https://github.com/CurtisConway"
+                    aria-label="Github"
                     title="GitHub Profile"
                     class="social_link"
                     rel="noopener"
@@ -42,6 +43,7 @@
 
                 <a
                     href="https://www.linkedin.com/in/curt-conway/"
+                    aria-label="LinkedIn"
                     title="LinkedIn Profile"
                     class="social_link"
                     rel="noopener"
@@ -57,7 +59,7 @@
         </section>
     </div>
 
-    <div class="background_polygon purple_polygon">
+    <div class="background_polygon purple_polygon" aria-hidden="true">
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
@@ -67,9 +69,9 @@
 </header>
 <div class="box_relative">
     <div class="container">
-        <section>
+        <section aria-describedby="bioDescription">
             <div class="card pad">
-                <p>
+                <p id="bioDescription">
                     As a professional with real-world experience in software design and engineering and a significant
                     understanding of business operations, I am well-positioned to help any sized company grow.
                 </p>
@@ -87,12 +89,13 @@
 <header>
     <div class="container right">
         <section>
-            <h1>Skills</h1>
+            <h1 id="skillsHeading">Skills</h1>
+            <p id="skillsDescription" class="caption">A small look into my vast toolbox.</p>
             <hr>
         </section>
     </div>
 
-    <div class="background_polygon green_polygon reverse">
+    <div class="background_polygon green_polygon reverse" aria-hidden="true">
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
@@ -102,13 +105,13 @@
 </header>
 <div class="box_relative">
     <div class="container right">
-        <section>
+        <section aria-labelledby="skillsHeading" aria-describedby="skillsDescription">
             <div class="card pad">
                 <h2>Industry Skills</h2>
                 <ul class="skills_list">
                     <li>Design</li>
-                    <li class="highlight">Client-Side Development</li>
-                    <li>Server-Side Development</li>
+                    <li class="highlight">Front-end Development</li>
+                    <li>Server-side Development</li>
                     <li>Database</li>
                     <li>SysOps</li>
                     <li class="highlight">Solution Architecture</li>
@@ -154,7 +157,7 @@
         </section>
     </div>
 
-    <div class="background_polygon orange_polygon">
+    <div class="background_polygon orange_polygon" aria-hidden="true">
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
         <div class="background_polygon child_polygon"></div>
@@ -167,9 +170,9 @@
         <section style="text-align:center;">
             <div class="avatar">
                 <img
-                    class="client_logo"
-                    alt="Musora Logo"
-                    src="https://res.cloudinary.com/dloxgdltu/image/upload/v1582853066/musora-logo-white_v4yuuc.png"
+                        class="client_logo"
+                        alt="Musora Logo"
+                        src="https://res.cloudinary.com/dloxgdltu/image/upload/v1582853066/musora-logo-white_v4yuuc.png"
                 >
             </div>
         </section>

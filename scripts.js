@@ -41,6 +41,26 @@ window.onload = () => {
             imageListDialog.getSlides();
         }
     });
+
+    const animatedBackgrounds = document.querySelectorAll('.background_polygon:not(.child_polygon)');
+    let isScrolling = false;
+    setInterval(() => {
+        if(isScrolling) {
+            animatedBackgrounds.forEach(background => background.classList.add('paused'));
+        } else {
+            animatedBackgrounds.forEach(background => background.classList.remove('paused'));
+        }
+    });
+    let scrollingInterval = setInterval(() => {
+        isScrolling = false;
+    }, 250);
+    window.addEventListener('scroll', function() {
+        clearInterval(scrollingInterval);
+        isScrolling = true;
+        scrollingInterval = setInterval(() => {
+            isScrolling = false;
+        }, 250);
+    });
 };
 
 class ImageListDialog {
