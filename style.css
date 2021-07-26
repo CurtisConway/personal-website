@@ -494,6 +494,7 @@ body.light_mode .image_list li {
     height:100%;
     width:100%;
     z-index:20;
+    border-radius:10px;
 }
 
 .iframe_dialog iframe.hidden {
@@ -527,6 +528,7 @@ body.light_mode .image_list li {
     display:inline-block;
     z-index:102;
     width:100%;
+    border-radius:10px;
 }
 
 .dialog_button {
@@ -623,6 +625,9 @@ body.light_mode .image_list li {
     height:auto;
     width:auto;
     z-index:2;
+    animation-iteration-count:1;
+    animation-duration:.5s;
+    border-radius:10px;
 }
 
 .image_slide.active {
@@ -630,64 +635,19 @@ body.light_mode .image_list li {
     opacity:1;
 }
 
-.enter_right {
-    animation-name:enterRight;
-}
-.exit_right {
-    animation-name:exitRight;
-}
-.enter_left {
-    animation-name:enterLeft;
-}
-.exit_left {
-    animation-name:exitLeft;
+.image_change {
+    animation-name:imageChange;
 }
 
-@keyframes enterRight {
+@keyframes imageChange {
     from {
-        opacity:0;
-        transform:translateX(-100%);
+        transform:scale(1.01);
+        opacity:.75;
     }
 
     to {
+        transform:scale(1);
         opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes exitRight {
-    from {
-        opacity:1;
-        transform:translateX(0);
-    }
-
-    to {
-        opacity:0;
-        transform:translateX(100%);
-    }
-}
-
-@keyframes enterLeft {
-    from {
-        opacity:0;
-        transform:translateX(100%);
-    }
-
-    to {
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes exitLeft {
-    from {
-        opacity:1;
-        transform:translateX(0);
-    }
-
-    to {
-        opacity:0;
-        transform:translateX(-100%);
     }
 }
 

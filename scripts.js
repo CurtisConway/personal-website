@@ -35,16 +35,19 @@ window.onload = () => {
         if(element.matches('.desktop_button')) {
             imageListDialog.imageType = 'desktop';
             imageListDialog.getSlides();
+            imageListDialog.animateSlide();
         }
 
         if(element.matches('.tablet_button')) {
             imageListDialog.imageType = 'tablet';
             imageListDialog.getSlides();
+            imageListDialog.animateSlide();
         }
 
         if(element.matches('.mobile_button')) {
             imageListDialog.imageType = 'mobile';
             imageListDialog.getSlides();
+            imageListDialog.animateSlide();
         }
     });
 };
@@ -81,6 +84,7 @@ class ImageListDialog {
         this.activeListId = null;
         this.dialogSlides = [];
         this.currentSlide = 0;
+        this.animationTimeout = 0;
 
         this.imageType = this.getImageTypeByBreakpoint();
 
@@ -166,6 +170,7 @@ class ImageListDialog {
 
         this.activeSlide = this.getSlideUrl(this.dialogSlides[this.currentSlide]);
         this.imageSlideImage.src = this.activeSlide;
+        this.animateSlide();
     }
 
     previousSlide() {
@@ -177,6 +182,18 @@ class ImageListDialog {
 
         this.activeSlide = this.getSlideUrl(this.dialogSlides[this.currentSlide]);
         this.imageSlideImage.src = this.activeSlide;
+        this.animateSlide();
+    }
+
+    animateSlide() {
+        this.imageSlideImage.classList.remove('image_change');
+        clearTimeout(this.animationTimeout);
+        setTimeout(() => {
+            this.imageSlideImage.classList.add('image_change');
+        }, 1);
+        this.animationTimeout = setTimeout(() => {
+            this.imageSlideImage.classList.remove('image_change');
+        }, 500);
     }
 }
 
