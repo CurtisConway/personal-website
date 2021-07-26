@@ -205,7 +205,7 @@ img {
     overflow:hidden;
     will-change:transform;
     z-index:-1;
-    background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/e_grayscale,o_20/v1627310758/shape-texture_kik14v.png);
+    background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/e_grayscale,o_30,q_auto:eco/v1627310758/shape-texture_kik14v.png);
     background-size:contain;
     background-repeat:round;
 }
