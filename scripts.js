@@ -2,16 +2,22 @@ import data from './data';
 
 window.onload = () => {
     const imageListDialog = new ImageListDialog(data);
+    const iframeDialog = new IframeDialog(document.querySelector('.iframe_dialog'));
 
     document.addEventListener('click', event => {
         const element = event.target;
 
-        if(element.matches('.image_list li')) {
+        if (element.matches('#musoraImageList') || element.matches('#junoImageList')) {
             imageListDialog.openDialog(element);
         }
 
         if(element.matches('.close_dialog, .dialog_background')) {
             imageListDialog.closeDialog();
+            iframeDialog.closeDialog();
+        }
+
+        if(element.matches('[data-open-iframe]')) {
+            iframeDialog.openDialog(element.dataset['openIframe']);
         }
 
         if(element.matches('.next_image')) {
@@ -43,9 +49,29 @@ window.onload = () => {
     });
 };
 
+class IframeDialog {
+    constructor(element) {
+        this.element = element;
+        this.iframe = element.querySelector('iframe');
+    }
+
+    openDialog(source) {
+        document.body.classList.add('no-scroll');
+        this.iframe.src = source;
+        this.element.classList.add('active');
+        this.iframe.classList.remove('hidden');
+    }
+
+    closeDialog() {
+        document.body.classList.remove('no-scroll');
+        this.element.classList.remove('active');
+        this.iframe.classList.add('hidden');
+        this.iframe.src = '';
+    }
+}
+
 class ImageListDialog {
     constructor(data){
-        const imageLists = document.querySelectorAll('.image_list');
         this.data = data;
         this.imageDialog = document.querySelector('.image_dialog');
         this.imageSlide = document.querySelector('.image_slide');
@@ -57,7 +83,6 @@ class ImageListDialog {
         this.currentSlide = 0;
 
         this.imageType = this.getImageTypeByBreakpoint();
-        this.initLists(imageLists);
 
         // Re initialize the lists if the window is resized to a different orientation/breakpoint
         window.addEventListener('resize', () => {
@@ -65,31 +90,10 @@ class ImageListDialog {
             this.imageType = this.getImageTypeByBreakpoint();
 
             if(oldImageType !== this.imageType) {
-                this.initLists(imageLists);
-
                 if(this.activeListId != null){
                     this.getSlides(this.activeListId);
                 }
             }
-        });
-    }
-
-    initLists(lists) {
-        Array.from(lists).forEach((list) => {
-            const listId = list.getAttribute('id');
-            const data = this.data[listId] || {};
-            const images = data[this.imageType];
-
-            // Clear the list if it has items already
-            list.innerHTML = '';
-
-            images.forEach((image) => {
-                const item = document.createElement('li');
-                item.dataset['listId'] = listId;
-                item.innerHTML = `<img src="${this.getThumb(image)}" alt="Musora Screenshot Thumbnail" />`;
-
-                list.appendChild(item);
-            });
         });
     }
 
@@ -114,15 +118,17 @@ class ImageListDialog {
     }
 
     openDialog(listItem) {
+        document.body.classList.add('no-scroll');
         this.imageDialog.classList.add('active');
         this.dialogActive = true;
-        this.activeListId = listItem.dataset['listId'];
-        this.currentSlide = Array.from(listItem.parentElement.children).indexOf(listItem);
+        this.activeListId = listItem.getAttribute('id');
+        this.currentSlide = 0;
 
         this.getSlides();
     }
 
     closeDialog() {
+        document.body.classList.remove('no-scroll');
         this.imageDialog.classList.remove('active');
         this.dialogActive = false;
     }

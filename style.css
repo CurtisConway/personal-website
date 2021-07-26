@@ -18,6 +18,10 @@ body {
     color:#fff;
 }
 
+body.no-scroll {
+    overflow:hidden;
+}
+
 header {
     min-height:200px;
     color:#fff;
@@ -191,7 +195,20 @@ img {
     bottom:0;
     right:0;
     transform:skewY(-4deg) scaleY(1.5);
+}
+
+.background_polygon:not(.child_polygon) {
+    animation-name:tiltIn;
+    animation-duration:30s;
+    animation-iteration-count:infinite;
+    animation-timing-function: cubic-bezier(.25,2,.5,1.25);
     overflow:hidden;
+    will-change:transform;
+    z-index:-1;
+}
+
+.background_polygon.reverse:not(.child_polygon) {
+    animation-name:tiltInReverse;
 }
 
 .background_polygon.reverse {
@@ -247,6 +264,30 @@ img {
     z-index:5;
 }
 
+@keyframes tiltIn {
+    0% {
+        transform:skewY(0) scaleY(1.5);
+    }
+    50% {
+        transform:skewY(-4deg) scaleY(1.5);
+    }
+    100% {
+        transform:skewY(0) scaleY(1.5);
+    }
+}
+
+@keyframes tiltInReverse {
+    0% {
+        transform:skewY(0) rotateY(180deg) scaleY(1.5);
+    }
+    50% {
+        transform:skewY(4deg) rotateY(180deg) scaleY(1.5);
+    }
+    100% {
+        transform:skewY(0) rotateY(180deg) scaleY(1.5);
+    }
+}
+
 .purple_polygon {
     box-shadow:0 0 2px #330099;
 }
@@ -287,15 +328,20 @@ img {
 
 .avatar {
     border-radius:50%;
-    height:200px;
-    width:200px;
-    padding:5px;
+    height:0;
+    padding-bottom:100%;
+    width:100%;
+    position:relative;
     background-color:#2d2d2d;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+}
+
+.avatar img {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:85%;
+    max-width:200px;
 }
 
 .card p:last-child, .card ul:last-child {
@@ -409,6 +455,38 @@ body.light_mode .image_list li {
     transform:scale(1);
 }
 
+.project_list {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+[role="button"] {
+    cursor:pointer;
+}
+
+[role="button"] > * {
+    pointer-events:none;
+}
+
+.project_list .project {
+    min-width:50%;
+    max-width:50%;
+    width:50%;
+    padding:15px;
+    transform:scale(1);
+    transition:transform .2s ease;
+}
+
+.project_list .project:hover {
+    transform:scale(1.05);
+}
+
+.game_logo {
+    border-radius:50%;
+}
 .image_list {
     list-style-type:none;
     margin:0 -5px 0 -5px;
@@ -439,7 +517,7 @@ body.light_mode .image_list li {
     transform:scale(1.25);
 }
 
-.image_dialog {
+.image_dialog, .iframe_dialog {
     position:fixed;
     top:0;
     left:0;
@@ -449,17 +527,38 @@ body.light_mode .image_list li {
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:30px;
+    padding:10px;
     display:none;
     transition:opacity .2s ease-in-out;
     transform:translateX(0);
 }
 
-.image_dialog.active {
+.image_dialog.active, .iframe_dialog.active {
     display:flex;
     animation-name:dialogFadeIn;
     animation-iteration-count:1;
     animation-duration:.4s;
+}
+
+.iframe_dialog .dialog_foreground {
+    height:99%;
+    width:99%;
+    position:relative;
+}
+
+.iframe_dialog .dialog_foreground iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
+    z-index:20;
+}
+
+.iframe_dialog iframe.hidden {
+    display:none;
 }
 
 @keyframes dialogFadeIn {
@@ -506,7 +605,7 @@ body.light_mode .image_list li {
     font-family: 'Montserrat', sans-serif;
     transition:transform .1s;
     transform:scale(1);
-    z-index:10;
+    z-index:21;
 }
 
 .dialog_button:active, .color_mode_button:active {
@@ -665,6 +764,11 @@ body.light_mode .image_list li {
 
     .image_list li {
         flex:0 0 25%;
+    }
+
+    .iframe_dialog .dialog_foreground {
+        height:95%;
+        width:95%;
     }
 }
 

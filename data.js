@@ -57,5 +57,28 @@ export default {
             'v1582927654/pianote_forums_desktop_y6vlb1.jpg',
             'v1582927655/pianote_thread_desktop_zrowqy.jpg',
         ],
+    },
+    junoImageList: {
+        mobile: [
+            'v1627265555/juno-home-mobile_mtsiro.png',
+            'v1627265800/juno-blog-mobile_barfly.png',
+            'v1627266205/juno-timeline-mobile_mqvwr8.png',
+            'v1627266363/transparency-mobile_mq0nyh.png',
+            'v1627266564/socially-powered-mobile_fxeybp.png',
+        ],
+        tablet: [
+            'v1627265555/juno-home-tablet_yvh7tq.png',
+            'v1627265800/juno-blog-tablet_chf2gt.png',
+            'v1627266205/juno-timeline-tablet_e4dqu4.png',
+            'v1627266363/transparency-tablet_znhctx.png',
+            'v1627266564/socially-powered-tablet_chapbl.png',
+        ],
+        desktop: [
+            'v1627265900/juno-home-desktop_ctgijj.png',
+            'v1627265800/juno-blog-desktop_imgg4g.png',
+            'v1627266205/juno-timeline-desktop_n5ki3j.png',
+            'v1627266363/transparency-desktop_wcgibw.png',
+            'v1627266564/socially-powered-desktop_nrsn0y.png',
+        ],
     }
 }
