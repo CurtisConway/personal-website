@@ -76,7 +76,7 @@ class ImageListDialog {
         this.imageDialog = document.querySelector('.image_dialog');
         this.imageSlide = document.querySelector('.image_slide');
         this.imageSlideImage = this.imageSlide.querySelector('img');
-        this.cdnUrl = 'https://res.cloudinary.com/dloxgdltu/image/upload';
+        this.cdnUrl = 'https://res.cloudinary.com/dloxgdltu/image/upload/q_auto:eco';
         this.dialogActive = false;
         this.activeListId = null;
         this.dialogSlides = [];
@@ -143,9 +143,7 @@ class ImageListDialog {
         this.imageDialog.classList.add(this.imageType);
         this.imageSlideImage.src = this.activeSlide;
 
-        this.imageSlideImage.onload = () => {
-            this.preloadSlides(this.dialogSlides.filter(slide => slide !== currentSlide));
-        };
+        this.preloadSlides(this.dialogSlides.filter(slide => slide !== currentSlide));
     }
 
     preloadSlides(slides = []) {
