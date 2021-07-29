@@ -197,7 +197,7 @@ img {
     transform:skewY(-4deg) scaleY(1.5);
 }
 
-.background_polygon:not(.child_polygon) {
+.background_polygon {
     animation-name:tiltIn;
     animation-duration:10s;
     animation-iteration-count:1;
@@ -205,12 +205,22 @@ img {
     overflow:hidden;
     will-change:transform;
     z-index:-1;
-    background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/e_grayscale,o_30,q_auto:eco/v1627310758/shape-texture_kik14v.png);
-    background-size:contain;
+}
+
+.background_polygon:after {
+    content: '';
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    opacity:.1;
+    background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1627532401/background-polygons_n32jwr.jpg);
+    background-size:cover;
     background-repeat:round;
 }
 
-.background_polygon.reverse:not(.child_polygon) {
+.background_polygon.reverse {
     animation-name:tiltInReverse;
 }
 
