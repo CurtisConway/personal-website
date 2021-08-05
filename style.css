@@ -18,10 +18,6 @@ body {
     color:#fff;
 }
 
-body, .card, li, .avatar {
-    transition:background-color .5s ease;
-}
-
 body.no-scroll {
     overflow:hidden;
 }
