@@ -1,0 +1,56 @@
+html {
+  --treeWidth: 10vh;
+  --treeTop: 0;
+  --treeLeft: 0;
+  --treeRotation: 0deg;
+}
+
+$trees: (
+  (35vh, 10%, 75%, 55deg),
+  (55vh, -15%, 60%, 35deg),
+  (45vh, 20%, 80%, 75deg),
+  (25vh, 0%, 45%, 5deg),
+  (65vh, 30%, 80%, 95deg),
+  (15vh, 74%, 22%, 215deg),
+);
+$f-trees: (
+  (105vh, -40%, 85%, 70deg),
+  (125vh, -100%, 40%, 35deg),
+  (150vh, 60%, 15%, 160deg),
+);
+
+.tree, .f-tree {
+  position:absolute;
+  height:auto;
+  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628410743/animation/tree_jqllyc.svg');
+  width:var(--treeWidth);
+  top: var(--treeTop);
+  left: var(--treeLeft);
+  transform:rotate(var(--treeRotation));
+}
+
+.tree {
+  $i: 1;
+  @each $tree in $trees {
+    &:nth-of-type(#{$i}) {
+      --treeWidth: #{nth($tree, 1)};
+      --treeTop: #{nth($tree, 2)};
+      --treeLeft: #{nth($tree, 3)};
+      --treeRotation: #{nth($tree, 4)};
+    }
+    $i: $i + 1;
+  }
+}
+
+.f-tree {
+  $i: 1;
+  @each $tree in $f-trees {
+    &:nth-of-type(#{$i}) {
+      --treeWidth: #{nth($tree, 1)};
+      --treeTop: #{nth($tree, 2)};
+      --treeLeft: #{nth($tree, 3)};
+      --treeRotation: #{nth($tree, 4)};
+    }
+    $i: $i + 1;
+  }
+}

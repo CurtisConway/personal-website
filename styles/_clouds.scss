@@ -1,0 +1,40 @@
+html {
+  --cloudWidth: 10vh;
+  --cloudTop: 0;
+  --cloudLeft: 0;
+  --cloudRotation: 0deg;
+}
+
+$clouds: (
+  (10vh, 15%, 85%, 45deg),
+  (15vh, 85%, 15%, 220deg),
+  (12vh, 85%, 85%, 140deg),
+  (8vh, 35%, 45%, 45deg),
+  (20vh, 95%, 50%, -185deg),
+  (10vh, 5%, 15%, -35deg),
+  (10vh, 35%, 5%, -72deg),
+  (30vh, 15%, -3%, -55deg),
+  (16vh, 78%, 2%, -125deg),
+  (25vh, 5%, 60%, 23deg),
+);
+
+.cloud {
+  position:absolute;
+  height:auto;
+  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628401467/animation/stylized_basic_cloud_netgx6.svg');
+  width:var(--cloudWidth);
+  top: var(--cloudTop);
+  left: var(--cloudLeft);
+  transform:rotate(var(--cloudRotation));
+
+  $i: 1;
+  @each $cloud in $clouds {
+    &:nth-of-type(#{$i}) {
+      --cloudWidth: #{nth($cloud, 1)};
+      --cloudTop: #{nth($cloud, 2)};
+      --cloudLeft: #{nth($cloud, 3)};
+      --cloudRotation: #{nth($cloud, 4)};
+    }
+    $i: $i + 1;
+  }
+}

@@ -1,10 +1,14 @@
 {
   "scripts": {
     "prebuild": "rm -rf dist/*.png;rm -rf dist/*.js;rm -rf dist/*.css;rm -rf dist/*.html;rm -rf dist/*.map",
-    "start": "parcel serve ./index.html",
+    "start": "parcel serve ./index.html --no-cache",
     "build": "parcel build ./index.html"
   },
+  "dependencies": {
+    "css-animated-character": "https://github.com/CurtisConway/css-animated-character.git"
+  },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-beta.3.1",
     "autoprefixer": "^10.2.6",
     "parcel": "^2.0.0-beta.3.1",
     "postcss": "^8.3.5"
