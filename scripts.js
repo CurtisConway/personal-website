@@ -6,8 +6,9 @@ window.onload = () => {
     const character = new AnimatedCharacter(document.getElementById('character'));
     const sky = document.querySelector('.sky');
     sky.addEventListener('animationiteration', () => {
-        console.log('hello?');
-        sky.classList.toggle('night');
+        requestAnimationFrame(() => {
+            sky.classList.toggle('night');
+        });
     });
     character.walk();
 };
