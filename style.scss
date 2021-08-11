@@ -4,6 +4,9 @@
 html {
     --worldRotation: 0deg;
     --worldSize: 400vh;
+    --worldTop: 175%;
+    //--worldSize: 100vh;
+    //--worldTop: 50%;
     box-sizing:border-box;
     height:100%;
 }
@@ -34,22 +37,22 @@ body {
 
 .world {
     position:absolute;
-    top:130%;
+    top:var(--worldTop);
     left:50%;
     transform:translate(-50%, -50%);
     width:var(--worldSize);
     height:var(--worldSize);
-    border-radius:50%;
-    overflow:hidden;
 }
 
 .sky {
     position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
+    width:125%;
+    height:125%;
+    top:-12.5%;
+    left:-12.5%;
     z-index:0;
+    border-radius:50%;
+    overflow:hidden;
 
     .day-background, .night-background {
         position:absolute;
@@ -93,10 +96,10 @@ body {
 
 .background {
     position:absolute;
-    width:40%;
-    height:40%;
-    top:30%;
-    left:30%;
+    width:60%;
+    height:60%;
+    top:20%;
+    left:20%;
 
     .box {
         animation-duration:90s;
@@ -105,24 +108,24 @@ body {
 
 .ground {
     position:absolute;
-    height:20%;
-    width:20%;
-    top:40%;
-    left:40%;
+    height:50%;
+    width:50%;
+    top:25%;
+    left:25%;
     border-radius:50%;
     z-index:2;
 
     .box {
-        animation-duration:45s;
+        animation-duration:60s;
     }
 }
 
 .foreground {
     position:absolute;
-    height:18%;
-    width:18%;
-    top:41%;
-    left:41%;
+    height:38%;
+    width:38%;
+    top:31%;
+    left:31%;
     border-radius:50%;
     z-index:3;
 
@@ -133,24 +136,12 @@ body {
 
 #character {
     position:relative;
-    top:-55%;
+    top:-15%;
     z-index:5;
 }
 
 #character > .character {
-    width:50%;
-}
-
-.controls {
-    width:100%;
-    max-width:320px;
-    margin:30px auto;
-    text-align:center;
-    display:flex;
-    flex-direction:row;
-    position:absolute;
-    bottom:0;
-    z-index:20;
+    width:20%;
 }
 
 button {
@@ -199,10 +190,21 @@ button:hover {
     background:yellow;
     border-radius:50%;
     position:absolute;
-    top:60%;
+    top:75%;
     left:20%;
     z-index:-1;
     box-shadow:0 0 15px yellow;
+    transition:all .2s linear;
+}
+
+.house {
+    position:absolute;
+    height:auto;
+    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628660687/animation/house_tbm0vb.svg');
+    width:50%;
+    top: 42%;
+    left: -40%;
+    transform:rotate(-105deg);
 }
 
 body .character .shadow {
