@@ -54,33 +54,39 @@ body {
     border-radius:50%;
     overflow:hidden;
 
-    .day-background, .night-background {
-        position:absolute;
-        top:0;
-        left:0;
-        bottom:0;
-        right:0;
-        transition:opacity 5s linear;
-        z-index:-2;
-    }
+    .box {
+        &:before, &:after {
+            content: '';
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            transition:opacity 5s linear;
+            z-index:-2;
+            will-change:opacity;
+        }
 
-    .day-background {
-        opacity:1;
-        background:linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
-    }
+        &:before {
+            opacity:1;
+            background:linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+        }
 
-    .night-background {
-        opacity:0;
-        background:linear-gradient(to bottom, #3d4d79 0%,  #20202c 100%);
+        &:after {
+            opacity:0;
+            background:linear-gradient(to bottom, #3d4d79 0%,  #20202c 100%);
+        }
     }
 
     &.night {
-        .day-background {
-            opacity:0;
-        }
+        .box {
+            &:before {
+                opacity:0;
+            }
 
-        .night-background {
-            opacity:1;
+            &:after {
+                opacity:1;
+            }
         }
 
         .sun {
