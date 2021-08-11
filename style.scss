@@ -102,10 +102,10 @@ body {
 
 .background {
     position:absolute;
-    width:60%;
-    height:60%;
-    top:20%;
-    left:20%;
+    width:55%;
+    height:55%;
+    top:22.5%;
+    left:22.5%;
     z-index:10;
 
     .box {
@@ -145,12 +145,6 @@ body {
     position:relative;
     top:-20%;
     z-index:5;
-
-    .head {
-        transform:rotate(-15deg)!important;
-        transition:transform .2s linear;
-        //animation-name:none;
-    }
 }
 
 #character > .character {
@@ -192,44 +186,33 @@ button:hover {
     z-index:1;
 }
 
-.ground .box {
+.ground .box, .background .box {
     background-color: #336633;
     background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628413123/animation/buried_tp6bxm.png);
 }
 
 .sun {
-    height:12%;
-    width:12%;
+    height:8%;
+    width:8%;
     background:yellow;
     border-radius:50%;
     position:absolute;
-    top:75%;
+    top:80%;
     left:34%;
     z-index:-1;
     box-shadow:0 0 15px yellow;
-    transition:all 5s linear;
+    transition:background 5s linear, box-shadow 5s linear;
 }
 
 .house {
     position:absolute;
     height:auto;
     content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628660687/animation/house_tbm0vb.svg');
-    width:50%;
-    top: 41%;
-    left: -39%;
-    transform:rotate(-105deg);
-}
-
-.hump {
-    position:absolute;
-    height:55%;
-    width:55%;
-    top: 28%;
-    left: -3%;
+    width:42%;
+    top: 42%;
+    left: -35%;
+    transform:rotate(-102deg);
     z-index:-1;
-    border-radius:50%;
-    background-color: #336633;
-    background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628413123/animation/buried_tp6bxm.png);
 }
 
 body .character .shadow {
