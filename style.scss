@@ -4,7 +4,7 @@
 html {
     --worldRotation: 0deg;
     --worldSize: 400vh;
-    --worldTop: 175%;
+    --worldTop: 185%;
     //--worldSize: 100vh;
     //--worldTop: 50%;
     box-sizing:border-box;
@@ -143,8 +143,14 @@ body {
 
 #character {
     position:relative;
-    top:-15%;
+    top:-20%;
     z-index:5;
+
+    .head {
+        transform:rotate(-15deg)!important;
+        transition:transform .2s linear;
+        //animation-name:none;
+    }
 }
 
 #character > .character {
@@ -198,10 +204,10 @@ button:hover {
     border-radius:50%;
     position:absolute;
     top:75%;
-    left:20%;
+    left:34%;
     z-index:-1;
     box-shadow:0 0 15px yellow;
-    transition:all .2s linear;
+    transition:all 5s linear;
 }
 
 .house {
@@ -209,9 +215,21 @@ button:hover {
     height:auto;
     content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628660687/animation/house_tbm0vb.svg');
     width:50%;
-    top: 42%;
-    left: -40%;
+    top: 41%;
+    left: -39%;
     transform:rotate(-105deg);
+}
+
+.hump {
+    position:absolute;
+    height:55%;
+    width:55%;
+    top: 28%;
+    left: -3%;
+    z-index:-1;
+    border-radius:50%;
+    background-color: #336633;
+    background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628413123/animation/buried_tp6bxm.png);
 }
 
 body .character .shadow {
