@@ -5,9 +5,12 @@
     "build": "parcel build ./index.html"
   },
   "dependencies": {
-    "css-animated-character": "https://github.com/CurtisConway/css-animated-character.git"
+    "css-animated-character": "https://github.com/CurtisConway/css-animated-character.git#main"
   },
   "devDependencies": {
+    "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.1823",
+    "@parcel/babel-preset-env": "^2.0.0-alpha.3",
+    "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-beta.3.1",
     "autoprefixer": "^10.2.6",
     "parcel": "^2.0.0-beta.3.1",
