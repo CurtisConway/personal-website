@@ -95,7 +95,7 @@ body {
     }
 
     .box {
-        animation-duration:120s;
+        animation-duration:180s;
     }
 }
 
@@ -108,7 +108,7 @@ body {
     z-index:10;
 
     .box {
-        animation-duration:90s;
+        animation-duration:120s;
     }
 }
 
@@ -136,7 +136,7 @@ body {
     z-index:30;
 
     .box {
-        animation-duration:60s;
+        animation-duration:75s;
     }
 }
 
@@ -186,8 +186,20 @@ button:hover {
 }
 
 .ground .box, .background .box {
-    background-color: #336633;
-    background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628413123/animation/buried_tp6bxm.png);
+    &:before {
+        content: '';
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:100%;
+        max-width:100%;
+        max-height:100%;
+        background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg);
+        background-size:cover;
+        background-position:center;
+        z-index:-1;
+    }
 }
 
 .sun {
@@ -206,17 +218,17 @@ button:hover {
 .house {
     position:absolute;
     height:auto;
-    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628660687/animation/house_tbm0vb.svg');
+    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628766930/animation/house-curved_ecstc8.svg');
     width:42%;
     top: 42%;
-    left: -35%;
-    transform:rotate(-102deg);
+    left: -34%;
+    transform:rotate(-101deg);
     z-index:-1;
 }
 
-body .character .shadow {
-    display:none;
-}
+//body .character .shadow {
+//    display:none;
+//}
 
 @keyframes backgroundMovement {
     from {

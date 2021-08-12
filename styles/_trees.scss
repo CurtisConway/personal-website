@@ -3,29 +3,27 @@ html {
   --treeTop: 0;
   --treeLeft: 0;
   --treeRotation: 0deg;
+  --treeOne: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree1_jbeui5.svg');
+  --treeTwo: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree2_fqmbdk.svg');
 }
 
 $trees: (
-  (25%, 35%, -22%, -102deg),
-  (55%, -40%, 72%, 40deg),
-  (45%, 32%, 96%, 100deg),
-  (25%, -25%, 45%, 6deg),
-  (49%, 89%, 51%, 160deg),
-  (15%, 90%, 17%, 210deg),
+  (28%, 35%, -22%, -96deg, var(--treeTwo)),
+  (55%, -36%, 70%, 40deg, var(--treeTwo)),
+  (45%, 32%, 96%, 100deg, var(--treeOne)),
+  (30%, -25%, 23%, -14deg, var(--treeOne)),
+  (49%, 89%, 48%, 160deg, var(--treeTwo)),
+  (26%, 90%, 17%, 203deg, var(--treeOne)),
 );
 $f-trees: (
-  (95%, -43%, 85%, 70deg),
-  (110%, 68%, 25%, 161deg),
-);
-$g-trees: (
-  (45%, -46%, 19%, -11deg),
-  (35%, 29%, -29%, 258deg),
+  (95%, -35%, 85%, 70deg, var(--treeOne)),
+  (110%, 78%, 26%, 161deg, var(--treeTwo)),
 );
 
 .tree, .f-tree, .g-tree {
   position:absolute;
   height:auto;
-  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628410743/animation/tree_jqllyc.svg');
+  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree1_jbeui5.svg');
   width:var(--treeWidth);
   top: var(--treeTop);
   left: var(--treeLeft);
@@ -40,6 +38,7 @@ $g-trees: (
       --treeTop: #{nth($tree, 2)};
       --treeLeft: #{nth($tree, 3)};
       --treeRotation: #{nth($tree, 4)};
+      content: #{nth($tree, 5)};
     }
     $i: $i + 1;
   }
@@ -53,20 +52,7 @@ $g-trees: (
       --treeTop: #{nth($tree, 2)};
       --treeLeft: #{nth($tree, 3)};
       --treeRotation: #{nth($tree, 4)};
-    }
-    $i: $i + 1;
-  }
-}
-
-.g-tree {
-  z-index:1;
-  $i: 1;
-  @each $tree in $g-trees {
-    &:nth-of-type(#{$i}) {
-      --treeWidth: #{nth($tree, 1)};
-      --treeTop: #{nth($tree, 2)};
-      --treeLeft: #{nth($tree, 3)};
-      --treeRotation: #{nth($tree, 4)};
+      content: #{nth($tree, 5)};
     }
     $i: $i + 1;
   }
