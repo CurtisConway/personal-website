@@ -3,16 +3,24 @@
 
 html {
     --worldRotation: 0deg;
-    --worldSize: 400vh;
-    --worldTop: 185%;
-    //--worldSize: 100vh;
-    //--worldTop: 50%;
+    --worldSize: 100%;
+    --worldTop: -15%;
     box-sizing:border-box;
     height:100%;
 }
 
 * {
     box-sizing:border-box;
+}
+
+.buttons {
+    position:fixed;
+    top:5px;
+    right:5px;
+    z-index:100;
+}
+.zoom {
+
 }
 
 body {
@@ -37,11 +45,27 @@ body {
 
 .world {
     position:absolute;
-    top:var(--worldTop);
+    top:50%;
     left:50%;
-    transform:translate(-50%, -50%);
-    width:var(--worldSize);
-    height:var(--worldSize);
+    transform:translate(-50%, var(--worldTop)) scale(var(--worldSize));
+    height:400vh;
+    width:400vh;
+    transition:transform 5s ease-in-out;
+    will-change:transform;
+    animation-name:fadeIn;
+    animation-duration:3s;
+    animation-iteration-count: 1;
+
+    &.zoomed-out {
+        --worldSize: 25%;
+        --worldTop: -50%;
+    }
+
+    &.moving {
+        .box {
+            animation-name:backgroundMovement;
+        }
+    }
 }
 
 .sky {
@@ -142,7 +166,7 @@ body {
 
 #character {
     position:relative;
-    top:-20%;
+    top:-24%;
     z-index:5;
 }
 
@@ -176,7 +200,6 @@ button:hover {
     height:100%;
     width:100%;
     border-radius:50%;
-    animation-name:backgroundMovement;
     animation-duration:45s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
@@ -186,8 +209,8 @@ button:hover {
 }
 
 .ground .box, .background .box {
-    &:before {
-        content: '';
+    .bg {
+        content: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg);
         position:absolute;
         top:0;
         left:0;
@@ -195,12 +218,14 @@ button:hover {
         width:100%;
         max-width:100%;
         max-height:100%;
-        background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg);
-        background-size:cover;
-        background-position:center;
-        z-index:-1;
+        z-index:-5;
+        //filter: drop-shadow(0 0 4px rgba(0,0,0,.8));
     }
 }
+
+//.prop {
+//    filter:drop-shadow(0 0 2px rgba(0,0,0,.8));
+//}
 
 .sun {
     height:8%;
@@ -236,6 +261,15 @@ body .character .shadow {
     }
     to {
         transform:rotate(-360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
     }
 }
 

@@ -4,7 +4,7 @@ import './style.scss';
 
 window.onload = () => {
     const character = new AnimatedCharacter(document.getElementById('character'));
-    const viewport = document.querySelector('.viewport');
+    const world = document.querySelector('.world');
     const props = document.querySelectorAll('.prop');
     const sky = document.querySelector('.sky');
     sky.addEventListener('animationiteration', () => {
@@ -12,7 +12,30 @@ window.onload = () => {
             sky.classList.toggle('night');
         });
     });
-    character.walk();
+
+    document.addEventListener('click', (event) => {
+        const element = event.target;
+        if(element.matches('#zoomOut')) {
+            requestAnimationFrame(() => {
+                world.classList.add('zoomed-out');
+            });
+        }
+        if(element.matches('#zoomIn')) {
+            requestAnimationFrame(() => {
+                world.classList.remove('zoomed-out');
+            });
+        }
+    });
+
+    setTimeout(() => {
+        requestAnimationFrame(() => {
+            world.classList.remove('zoomed-out');
+            setTimeout(() => {
+                character.walk();
+                world.classList.add('moving');
+            }, 3000);
+        });
+    }, 3000);
 
     // const intersectionObserver = new IntersectionObserver((entries) => {
     //     entries.forEach(entry => {
