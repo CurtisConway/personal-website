@@ -7,6 +7,14 @@ window.onload = () => {
     const world = document.querySelector('.world');
     const props = document.querySelectorAll('.prop');
     const sky = document.querySelector('.sky');
+
+    setTimeout(() => {
+        requestAnimationFrame(() => {
+            character.walk();
+            world.classList.add('moving');
+        });
+    }, 1000);
+
     sky.addEventListener('animationiteration', () => {
         requestAnimationFrame(() => {
             sky.classList.toggle('night');
@@ -26,16 +34,6 @@ window.onload = () => {
             });
         }
     });
-
-    setTimeout(() => {
-        requestAnimationFrame(() => {
-            world.classList.remove('zoomed-out');
-            setTimeout(() => {
-                character.walk();
-                world.classList.add('moving');
-            }, 3000);
-        });
-    }, 3000);
 
     // const intersectionObserver = new IntersectionObserver((entries) => {
     //     entries.forEach(entry => {
