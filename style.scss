@@ -51,8 +51,6 @@ body {
     transform:translate(-50%, var(--worldTop)) scale(var(--worldSize));
     height:400vh;
     width:400vh;
-    transition:transform 5s ease-in-out;
-    will-change:transform;
     animation-name:fadeIn;
     animation-duration:1s;
     animation-iteration-count: 1;
