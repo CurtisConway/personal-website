@@ -186,22 +186,19 @@ button:hover {
 }
 
 .ground .box, .background .box {
-    background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg);
-    background-size:103%;
-    background-position:center;
-
-    &:after {
+    &:before {
         content: '';
         position:absolute;
         top:0;
         left:0;
         height:100%;
         width:100%;
-        background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628413123/animation/buried_tp6bxm.png);
-        border-radius:50%;
-        overflow:hidden;
-        opacity:.5;
-        z-index:-5;
+        max-width:100%;
+        max-height:100%;
+        background-image: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg);
+        background-size:cover;
+        background-position:center;
+        z-index:-1;
     }
 }
 
