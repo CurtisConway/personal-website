@@ -5,7 +5,7 @@ import './style.scss';
 window.onload = () => {
     const character = new AnimatedCharacter(document.getElementById('character'));
     const world = document.querySelector('.world');
-    const props = document.querySelectorAll('.prop');
+    const ground = document.querySelector('.ground .box');
     const sky = document.querySelector('.sky');
 
     setTimeout(() => {
@@ -15,7 +15,7 @@ window.onload = () => {
         });
     }, 1000);
 
-    sky.addEventListener('animationiteration', () => {
+    ground.addEventListener('animationiteration', () => {
         requestAnimationFrame(() => {
             sky.classList.toggle('night');
         });

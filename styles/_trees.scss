@@ -8,19 +8,20 @@ html {
 }
 
 $trees: (
-  (28%, 35%, -22%, -96deg, var(--treeTwo)),
-  (55%, -36%, 70%, 40deg, var(--treeTwo)),
-  (45%, 32%, 96%, 100deg, var(--treeOne)),
-  (30%, -25%, 23%, -14deg, var(--treeOne)),
+  (28%, 35%, -27%, -96deg, var(--treeTwo)),
+  (55%, -36%, 79%, 44deg, var(--treeTwo)),
+  (45%, 32%, 100%, 95deg, var(--treeOne)),
+  (30%, -30%, 23%, -14deg, var(--treeOne)),
   (49%, 89%, 48%, 160deg, var(--treeTwo)),
-  (26%, 90%, 17%, 203deg, var(--treeOne)),
+  (26%, 94%, 17%, 203deg, var(--treeOne)),
 );
 $f-trees: (
-  (95%, -35%, 85%, 70deg, var(--treeOne)),
-  (110%, 78%, 26%, 161deg, var(--treeTwo)),
+  (95%, -37%, 93%, 70deg, var(--treeOne)),
+  (110%, 87%, 26%, 164deg, var(--treeTwo)),
 );
 
 .tree, .f-tree, .g-tree {
+  z-index:-6;
   position:absolute;
   height:auto;
   content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree1_jbeui5.svg');
