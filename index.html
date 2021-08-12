@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#330099">
     <link rel="icon" href="favicon.ico">
+    <style>
+        @import './style.scss';
+    </style>
 </head>
 
 <body>
@@ -71,6 +74,9 @@
             </div>
         </div>
     </main>
-    <script src="scripts.js" type="module"></script>
+    <script type="module">
+        import start from "./scripts";
+        start();
+    </script>
 </body>
 </html>
