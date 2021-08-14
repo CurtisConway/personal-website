@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Curt Conway</title>
-    <meta name="description" content="Hi, I'm Curt. Freelance Full-stack Developer.">
+    <meta name="description" content="Front-end Developer. I'm not a scientist - I'm an artist.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#330099">
     <link rel="icon" href="favicon.ico">
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <main class="viewport">
+    <main class="viewport" aria-label="Viewport">
 <!--        <div class="buttons">-->
 <!--            <button id="zoomOut" class="zoom">-->
 <!--                Zoom Out-->
@@ -24,53 +24,61 @@
 <!--                Zoom In-->
 <!--            </button>-->
 <!--        </div>-->
-
-        <div class="world">
-            <div class="sky">
-                <div class="box">
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="cloud prop"></span>
-                    <span class="sun prop"></span>
+        <section class="content-box" aria-labelledby="name" aria-describedby="title">
+            <div class="content">
+                <h1 id="name">Curt Conway</h1>
+                <h2 id="title">Front-end Developer</h2>
+                <span class="divider" aria-hidden="true"></span>
+                <h3>I'm not a scientist.</h3>
+                <h3>I'm an <span class="underline">artist.</span></h3>
+            </div>
+        </section>
+        <div class="world" aria-label="World">
+            <div class="sky" aria-label="Sky">
+                <div class="box" aria-label="Clouds">
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="cloud prop" aria-label="Cloud"></span>
+                    <span class="sun prop" aria-label="Sun"></span>
                 </div>
             </div>
-            <div class="background">
-                <div class="box">
-                    <span class="mountains"></span>
+            <div class="background" aria-label="Background">
+                <div class="box" aria-label="Mountains">
+                    <span class="mountains" aria-label="Mountains"></span>
                 </div>
-                <div class="box">
-                    <span class="trees"></span>
+                <div class="box" aria-label="Trees">
+                    <span class="trees" aria-label="Trees"></span>
                 </div>
-                <div class="box">
-                    <span class="house prop"></span>
-                    <span class="grass"></span>
-                </div>
-            </div>
-            <div class="ground">
-                <div id="character"></div>
-                <div id="dog"></div>
-                <div class="box">
-                    <div class="tree prop"></div>
-                    <div class="tree prop"></div>
-                    <div class="tree prop"></div>
-                    <div class="tree prop"></div>
-                    <div class="tree prop"></div>
-                    <div class="tree prop"></div>
-                    <div class="floor"></div>
+                <div class="box" aria-label="House and Grass">
+                    <span class="house prop" aria-label="House"></span>
+                    <span class="grass" aria-label="Grass"></span>
                 </div>
             </div>
-            <div class="foreground">
-                <div class="box">
-                    <div class="f-tree prop"></div>
-                    <div class="f-tree prop"></div>
-                    <span class="grass"></span>
+            <div class="ground" aria-label="Ground">
+                <div id="character" aria-label="Person"></div>
+                <div id="dog" aria-label="Dog"></div>
+                <div class="box" aria-label="Trees">
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="tree prop" aria-label="Tree"></div>
+                    <div class="floor" aria-label="Floor"></div>
+                </div>
+            </div>
+            <div class="foreground" aria-label="Foreground">
+                <div class="box" aria-label="Trees">
+                    <div class="f-tree prop" aria-label="Tree"></div>
+                    <div class="f-tree prop" aria-label="Tree"></div>
+                    <span class="grass" aria-label="Grass"></span>
                 </div>
             </div>
         </div>
