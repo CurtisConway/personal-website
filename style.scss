@@ -1,0 +1,379 @@
+@import './styles/_clouds.scss';
+@import './styles/_trees.scss';
+@import '~css-animated-character/styles/character.scss';
+
+html {
+    --worldRotation: 0deg;
+    --worldSize: 1;
+    --worldTop: -17%;
+    box-sizing:border-box;
+    height:100%;
+    font-size:16px;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+.buttons {
+    position:fixed;
+    top:5px;
+    right:5px;
+    z-index:100;
+}
+
+
+.content-box {
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    z-index:100;
+    padding:15px 30px;
+
+    .content {
+        z-index:20;
+        color:#fff;
+        width:auto;
+        max-width:95vw;
+        padding:15px 45px;
+        display:inline-block;
+        position:relative;
+
+        &:after {
+            content: '';
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color:#242424;
+            z-index:-1;
+            transform:skew(20deg);
+            border-radius:30px 10px 30px 10px;
+        }
+
+        h1, h2, h3 {
+            margin:0;
+            white-space:nowrap;
+        }
+
+        h1 {
+            font-size:200%;
+            font-family:Arial, serif;
+            margin-left:-30px;
+        }
+
+        h2 {
+            font-size:100%;
+            font-family:monospace;
+            margin-left:-20px;
+        }
+
+        .divider {
+            display:block;
+            border-top:1px solid #fff;
+            padding-left:30px;
+            margin:10px auto 10px -10px;
+        }
+
+        h3 {
+            font-size:75%;
+            font-weight:400;
+            font-style:italic;
+            margin-left:0;
+            &:nth-of-type(2) {
+                margin-left:10px;
+            }
+        }
+
+        .underline {
+            border-bottom:thin solid rgba(255, 255, 255, .5);
+        }
+    }
+}
+
+body {
+    margin:0;
+    position:relative;
+    height:auto;
+    min-height:100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color:#fff;
+    overflow:hidden;
+    background:linear-gradient(to bottom, #3d4d79 0%,  #20202c 100%);
+}
+
+.viewport {
+    height:100%;
+    width:100vw;
+    overflow:hidden;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.world {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, var(--worldTop)) scale(var(--worldSize));
+    height:400vh;
+    width:400vh;
+    animation-name:fadeIn;
+    animation-duration:1s;
+    animation-iteration-count: 1;
+    //transition:transform 5s ease-in-out;
+
+    &.zoomed-out {
+        --worldSize: .25;
+        --worldTop: -50%;
+    }
+
+    &.moving {
+        .box {
+            animation-name:backgroundMovement;
+        }
+    }
+}
+
+.sky {
+    position:absolute;
+    width:125%;
+    height:125%;
+    top:-12.5%;
+    left:-12.5%;
+    z-index:0;
+    border-radius:50%;
+    overflow:hidden;
+
+    .box {
+        &:before, &:after {
+            content: '';
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            transition:opacity 5s linear;
+            z-index:-2;
+        }
+
+        &:before {
+            opacity:1;
+            background:linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+        }
+
+        &:after {
+            opacity:0;
+            background:linear-gradient(to bottom, #3d4d79 0%,  #20202c 100%);
+        }
+    }
+
+    &.night {
+        .box {
+            &:before {
+                opacity:0;
+            }
+
+            &:after {
+                opacity:1;
+            }
+        }
+
+        .sun {
+            background:white;
+        }
+    }
+
+    .box {
+        animation-duration:360s;
+    }
+}
+
+.background {
+    position:absolute;
+    width:55%;
+    height:55%;
+    top:22.5%;
+    left:22.5%;
+    z-index:10;
+
+    .box {
+        &:nth-of-type(1) {
+            animation-duration:240s;
+        }
+        &:nth-of-type(2) {
+            animation-duration:180s;
+        }
+        &:nth-of-type(3) {
+            animation-duration:120s;
+        }
+    }
+}
+
+.ground {
+    position:absolute;
+    height:50%;
+    width:50%;
+    top:25%;
+    left:25%;
+    border-radius:50%;
+    z-index:20;
+
+    .box {
+        animation-duration:90s;
+    }
+}
+
+.foreground {
+    position:absolute;
+    height:45%;
+    width:45%;
+    top:27.5%;
+    left:27.5%;
+    border-radius:50%;
+    z-index:30;
+
+    .box {
+        animation-duration:60s;
+    }
+}
+
+#character, #dog {
+    position:relative;
+    top:-20%;
+    z-index:5;
+}
+
+#dog {
+    top:-43%;
+}
+
+#character > .character, #dog > .dog {
+    width:20%;
+}
+
+button {
+    user-select: none;
+    height:50px;
+    width:150px;
+    background:#e4e4e4;
+    border:none;
+    outline:none;
+    border-radius:5px;
+    margin:0 5px;
+    cursor:pointer;
+    transition:all .2s ease-in-out;
+    touch-action: manipulation;
+}
+
+button:hover {
+    background-color: #b4b4b4;
+}
+
+.box {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    border-radius:50%;
+    animation-duration:45s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    //animation-play-state: paused;
+    transform-origin:center;
+    z-index:1;
+}
+
+.floor {
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg');
+    position:absolute;
+    top:0;
+    left:0;
+    height:120%;
+    width:120%;
+    max-width:100%;
+    max-height:100%;
+    z-index:-5;
+}
+
+
+.mountains, .trees, .grass {
+    position:absolute;
+    background-size:100%;
+    background-position:center;
+}
+
+.grass {
+    z-index:0;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628791039/animation/grassbg_ngiyzd.png');
+}
+
+.trees {
+    z-index:-50;
+    top:-12%;
+    left:-12%;
+    height:124%;
+    width:124%;
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628791042/animation/treebg_vsbqxn.png');
+}
+
+.mountains {
+    top:-20%;
+    left:-20%;
+    height:140%;
+    width:140%;
+    z-index:-60;
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628786568/animation/mountainsbackground_ztwrji.svg');
+}
+
+
+.sun {
+    height:8%;
+    width:8%;
+    background:yellow;
+    border-radius:50%;
+    position:absolute;
+    top:80%;
+    left:34%;
+    z-index:-1;
+    transition:background 5s linear;
+}
+
+.house {
+    position:absolute;
+    height:auto;
+    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628766930/animation/house-curved_ecstc8.svg');
+    width:42%;
+    top: 42%;
+    left: -34%;
+    transform:rotate(-102deg);
+    z-index:1;
+}
+
+@keyframes backgroundMovement {
+    from {
+        transform:rotate(0);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+

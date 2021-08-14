@@ -1,0 +1,60 @@
+html {
+  --treeWidth: 10vh;
+  --treeTop: 0;
+  --treeLeft: 0;
+  --treeRotation: 0deg;
+  --treeOne: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree1_jbeui5.svg');
+  --treeTwo: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree2_fqmbdk.svg');
+}
+
+$trees: (
+  (28%, 35%, -27%, -96deg, var(--treeTwo)),
+  (55%, -36%, 79%, 44deg, var(--treeTwo)),
+  (45%, 32%, 100%, 95deg, var(--treeOne)),
+  (30%, -30%, 23%, -14deg, var(--treeOne)),
+  (49%, 89%, 48%, 160deg, var(--treeTwo)),
+  (26%, 94%, 17%, 203deg, var(--treeOne)),
+);
+$f-trees: (
+  (95%, -37%, 93%, 70deg, var(--treeOne)),
+  (110%, 87%, 26%, 164deg, var(--treeTwo)),
+);
+
+.tree, .f-tree, .g-tree {
+  z-index:-6;
+  position:absolute;
+  height:auto;
+  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628759071/animation/tree1_jbeui5.svg');
+  width:var(--treeWidth);
+  top: var(--treeTop);
+  left: var(--treeLeft);
+  transform:rotate(var(--treeRotation));
+}
+
+.tree {
+  $i: 1;
+  @each $tree in $trees {
+    &:nth-of-type(#{$i}) {
+      --treeWidth: #{nth($tree, 1)};
+      --treeTop: #{nth($tree, 2)};
+      --treeLeft: #{nth($tree, 3)};
+      --treeRotation: #{nth($tree, 4)};
+      content: #{nth($tree, 5)};
+    }
+    $i: $i + 1;
+  }
+}
+
+.f-tree {
+  $i: 1;
+  @each $tree in $f-trees {
+    &:nth-of-type(#{$i}) {
+      --treeWidth: #{nth($tree, 1)};
+      --treeTop: #{nth($tree, 2)};
+      --treeLeft: #{nth($tree, 3)};
+      --treeRotation: #{nth($tree, 4)};
+      content: #{nth($tree, 5)};
+    }
+    $i: $i + 1;
+  }
+}

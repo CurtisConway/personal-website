@@ -1,0 +1,42 @@
+html {
+  --cloudWidth: 10vh;
+  --cloudTop: 0;
+  --cloudLeft: 0;
+  --cloudRotation: 0deg;
+}
+
+$clouds: (
+  (6%, 20%, 75%, 45deg),
+  (8%, 79%, 28%, 206deg),
+  (8%, 40%, 85%, 85deg),
+  (5%, 12%, 45%, -9deg),
+  (6%, 84%, 50%, -185deg),
+  (8%, 75%, 70%, 140deg),
+  (8%, 35%, 14%, -68deg),
+  (8%, 17%, 23%, -37deg),
+  (6%, 64%, 23%, -115deg),
+  (8%, 14%, 60%, 23deg),
+);
+
+.cloud {
+  position:absolute;
+  height:auto;
+  content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628760145/animation/cloud_ivaez4.svg');
+  width:var(--cloudWidth);
+  top: var(--cloudTop);
+  left: var(--cloudLeft);
+  transform:rotate(var(--cloudRotation));
+}
+
+.cloud {
+  $i: 1;
+  @each $cloud in $clouds {
+    &:nth-of-type(#{$i}) {
+      --cloudWidth: #{nth($cloud, 1)};
+      --cloudTop: #{nth($cloud, 2)};
+      --cloudLeft: #{nth($cloud, 3)};
+      --cloudRotation: #{nth($cloud, 4)};
+    }
+    $i: $i + 1;
+  }
+}
