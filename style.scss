@@ -87,6 +87,24 @@ html {
             }
         }
 
+        .social-links {
+            margin-top:10px;
+            width:100%;
+            text-align:center;
+        }
+
+        a {
+            color:#fff;
+            vertical-align:middle;
+            line-height:30px;
+            margin:0 10px;
+
+            svg {
+                vertical-align:middle;
+                margin-right:5px;
+            }
+        }
+
         .underline {
             border-bottom:thin solid rgba(255, 255, 255, .5);
         }
