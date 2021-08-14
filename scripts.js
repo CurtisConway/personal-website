@@ -1,15 +1,20 @@
 import AnimatedCharacter from "css-animated-character/scripts/AnimatedCharacter";
+import AnimatedDogCharacter from "css-animated-character/scripts/AnimatedDogCharacter";
 
 export default function() {
     window.onload = () => {
         const character = new AnimatedCharacter(document.getElementById('character'));
+        const dog = new AnimatedDogCharacter(document.getElementById('dog'));
         const world = document.querySelector('.world');
         const ground = document.querySelector('.ground .box');
         const sky = document.querySelector('.sky');
 
+        console.log(dog);
+
         setTimeout(() => {
             requestAnimationFrame(() => {
                 character.walk();
+                dog.walk();
                 world.classList.add('moving');
             });
         }, 1000);
