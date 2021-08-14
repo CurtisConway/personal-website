@@ -4,7 +4,7 @@
     "build": "parcel build ./index.html --no-cache"
   },
   "dependencies": {
-    "css-animated-character": "https://github.com/CurtisConway/css-animated-character.git#main"
+    "css-animated-character": "https://github.com/CurtisConway/css-animated-character.git"
   },
   "devDependencies": {
     "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.1823",
