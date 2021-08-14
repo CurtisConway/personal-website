@@ -9,8 +9,6 @@ export default function() {
         const ground = document.querySelector('.ground .box');
         const sky = document.querySelector('.sky');
 
-        console.log(dog);
-
         setTimeout(() => {
             requestAnimationFrame(() => {
                 character.walk();
