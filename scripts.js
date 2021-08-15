@@ -25,35 +25,21 @@ export default function() {
 
         document.addEventListener('click', (event) => {
             const element = event.target;
-            if(element.matches('#zoomOut')) {
-                requestAnimationFrame(() => {
-                    world.classList.add('zoomed-out');
-                });
-            }
-            if(element.matches('#zoomIn')) {
-                requestAnimationFrame(() => {
-                    world.classList.remove('zoomed-out');
-                });
+            const handlers = {
+                'zoomOut': () => {
+                    requestAnimationFrame(() => {
+                        world.classList.add('zoomed-out');
+                    });
+                },
+                'zoomIn': () => {
+                    requestAnimationFrame(() => {
+                        world.classList.remove('zoomed-out');
+                    });
+                }
+            };
+            if(handlers[element.id] != null) {
+                handlers[element.id]();
             }
         });
-
-        // const intersectionObserver = new IntersectionObserver((entries) => {
-        //     entries.forEach(entry => {
-        //         // console.log(entry);
-        //         if(entry.isIntersecting) {
-        //             entry.target.classList.remove('offscreen');
-        //         } else {
-        //             entry.target.classList.add('offscreen');
-        //         }
-        //     });
-        // }, {
-        //     root: viewport,
-        //     rootMargin: '10%',
-        //     threshold: 0.01,
-        // });
-        //
-        // props.forEach((prop) => {
-        //     intersectionObserver.observe(prop);
-        // });
     };
 };
