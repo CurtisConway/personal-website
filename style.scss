@@ -19,7 +19,7 @@ html {
     position:fixed;
     top:5px;
     right:5px;
-    z-index:100;
+    z-index:150;
 }
 
 
@@ -307,7 +307,7 @@ button:hover {
 }
 
 .floor {
-    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628763792/animation/ground_ym1qvi.svg');
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628986644/animation/ground_egv8el.svg');
     position:absolute;
     top:0;
     left:0;
@@ -331,7 +331,7 @@ button:hover {
     left:0;
     height:100%;
     width:100%;
-    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628791039/animation/grassbg_ngiyzd.png');
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628986149/animation/grassbg_zfdzvr.svg');
 }
 
 .trees {
@@ -340,7 +340,7 @@ button:hover {
     left:-12%;
     height:124%;
     width:124%;
-    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628791042/animation/treebg_vsbqxn.png');
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628986237/animation/treebg_c7bytd.svg');
 }
 
 .mountains {
@@ -349,7 +349,7 @@ button:hover {
     height:140%;
     width:140%;
     z-index:-60;
-    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628786568/animation/mountainsbackground_ztwrji.svg');
+    content:url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628986531/animation/mountainsbackground_k5svu4.svg');
 }
 
 
@@ -368,7 +368,7 @@ button:hover {
 .house {
     position:absolute;
     height:auto;
-    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628766930/animation/house-curved_ecstc8.svg');
+    content: url('https://res.cloudinary.com/dloxgdltu/image/upload/v1628986420/animation/house-curved-plain_b7rnag.svg');
     width:42%;
     top: 42%;
     left: -34%;
