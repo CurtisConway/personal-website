@@ -3,3 +3,6 @@ User-agent: Bingbot
 User-agent: Slurp
 User-agent: DuckDuckBot
 Allow: /
+
+User-agent: *
+Disallow: /
